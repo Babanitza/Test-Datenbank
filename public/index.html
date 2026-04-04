@@ -4,24 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenbank Demo</title>
+    <title>Probleme melden</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
         }
-        input {
+        input, textarea {
             padding: 8px;
-            width: 250px;
+            width: 300px;
+            margin-bottom: 10px;
+            display: block;
         }
         button {
             padding: 8px 12px;
-            margin-left: 5px;
+            margin-right: 5px;
         }
         #ausgabe p {
             background: #f0f0f0;
-            padding: 8px;
+            padding: 10px;
             border-radius: 5px;
         }
     </style>
@@ -29,9 +31,14 @@
 
 <body>
 
-    <h2>Datenbank Test</h2>
+    <h2>Problem melden</h2>
 
-    <input id="text" placeholder="Etwas eintragen">
+    <input id="name" placeholder="Name">
+    <input id="klasse" placeholder="Klasse (z.B. 6a)">
+    <textarea id="problem" placeholder="Problem" rows="3"></textarea>
+    <input id="pause" placeholder="Pause (z.B. Donnerstag, 1. große Pause)">
+    <input id="vertrauensschueler" placeholder="Vertrauensschüler">
+
     <button onclick="speichern()">Speichern</button>
     <button onclick="laden()">Alle anzeigen</button>
 
@@ -42,18 +49,31 @@
         const API = "https://test-datenbank-production.up.railway.app/api";
 
         async function speichern() {
-            const text = document.getElementById("text").value.trim();
-            if (!text) return alert("Bitte Text eingeben!");
+            const name = document.getElementById("name").value.trim();
+            const klasse = document.getElementById("klasse").value.trim();
+            const problem = document.getElementById("problem").value.trim();
+            const pause = document.getElementById("pause").value.trim();
+            const vertrauensschueler = document.getElementById("vertrauensschueler").value.trim();
+
+            if (!name || !klasse || !problem || !pause) {
+                return alert("Bitte alle Felder ausfüllen!");
+            }
 
             try {
-                await fetch(API + "/eintrag", {
+                await fetch(API + "/probleme", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ text })
+                    body: JSON.stringify({ name, klasse, problem, pause, vertrauensschueler })
                 });
 
                 alert("Gespeichert!");
-                document.getElementById("text").value = "";
+
+                document.getElementById("name").value = "";
+                document.getElementById("klasse").value = "";
+                document.getElementById("problem").value = "";
+                document.getElementById("pause").value = "";
+                document.getElementById("vertrauensschueler").value = "";
+
             } catch (err) {
                 alert("Fehler beim Speichern");
                 console.error(err);
@@ -62,10 +82,17 @@
 
         async function laden() {
             try {
-                const daten = await fetch(API + "/eintrag").then(r => r.json());
+                const daten = await fetch(API + "/probleme").then(r => r.json());
 
                 document.getElementById("ausgabe").innerHTML =
-                    daten.map(e => `<p>${e.text} <br><small>${e.datum}</small></p>`).join("");
+                    daten.map(e => `
+                        <p>
+                            <strong>${e.name}</strong> (${e.klasse})<br>
+                            <em>${e.pause}</em><br><br>
+                            ${e.problem}<br>
+                            <small>Vertrauensschüler: ${e.vertrauensschueler || "—"}</small>
+                        </p>
+                    `).join("");
 
             } catch (err) {
                 alert("Fehler beim Laden");
