@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Probleme melden</title>
+    <title>Datenbank Bestellungen</title>
 
     <style>
         body {
@@ -69,10 +69,6 @@
 
 
     <button onclick="speichern()">Speichern</button>
-    <button onclick="laden()">Alle anzeigen</button>
-
-    <h3>Ausgabe:</h3>
-    <div id="ausgabe"></div>
 
     <script>
         const API = "https://test-datenbank-production.up.railway.app/api";
@@ -166,32 +162,6 @@
 
             } catch (err) {
                 alert("Fehler beim Speichern");
-                console.error(err);
-            }
-        }
-
-        async function laden() {
-            try {
-                const daten = await fetch(API + "/bestellungen").then(r => r.json());
-
-                document.getElementById("ausgabe").innerHTML =
-                    daten.map(e => `
-                        <p>
-                            <strong>${e.vorname} ${e.nachname}</strong> (${e.klasse})<br>
-                            <em>E-Mail: ${e.e_mail || "—"} | Tel: ${e.telefonnummer || "—"}</em><br>
-                            <em>Adresse: ${e.strasse || "—"}, ${e.ort || "—"}</em><br><br>
-                            <strong>Artikel 1:</strong> ${e.artikel_1 || "—"} | Logo: ${e.logo_1 || "—"} | Platzierung: ${e.logo_platzierung_1 || "—"} | Größe: ${e.groesse_1 || "—"} | Anzahl: ${e.anzahl_1 || "—"} | Preis: ${e.einzelpreis_1 || "—"} | Kosten: ${e.kosten_1 || "—"}<br>
-                            <strong>Artikel 2:</strong> ${e.artikel_2 || "—"} | Logo: ${e.logo_2 || "—"} | Platzierung: ${e.logo_platzierung_2 || "—"} | Größe: ${e.groesse_2 || "—"} | Anzahl: ${e.anzahl_2 || "—"} | Preis: ${e.einzelpreis_2 || "—"} | Kosten: ${e.kosten_2 || "—"}<br>
-                            <strong>Artikel 3:</strong> ${e.artikel_3 || "—"} | Logo: ${e.logo_3 || "—"} | Platzierung: ${e.logo_platzierung_3 || "—"} | Größe: ${e.groesse_3 || "—"} | Anzahl: ${e.anzahl_3 || "—"} | Preis: ${e.einzelpreis_3 || "—"} | Kosten: ${e.kosten_3 || "—"}<br>
-                            <strong>Gesamtkosten:</strong> ${e.gesamtkosten || "—"}<br>
-                            <strong>Rechnung verschickt:</strong> ${e.rechnung_verschickt || "—"}<br>
-                            <strong>Bezahlt am:</strong> ${e.bezahlt_am || "—"}<br>
-                            <strong>Erledigt:</strong> ${e.erledigt || "—"}
-                        </p>
-                    `).join("");
-
-            } catch (err) {
-                alert("Fehler beim Laden");
                 console.error(err);
             }
         }
