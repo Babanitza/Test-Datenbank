@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenbank</title>
+</head>
+
+<body>
+    <input id="text" placeholder="Etwas eintragen">
+    <button onclick="speichern()">Speichern</button>
+    <button onclick="laden()">Alle anzeigen</button>
+
+    <div id="ausgabe"></div>
+
+    <script>
+        const API = "https://DEIN-BACKEND-URL.railway.app/api";
+
+        async function speichern() {
+            const text = document.getElementById("text").value;
+
+            await fetch(API + "/eintrag", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text })
+            });
+
+            alert("Gespeichert!");
+        }
+
+        async function laden() {
+            const daten = await fetch(API + "/eintrag").then(r => r.json());
+
+            document.getElementById("ausgabe").innerHTML =
+                daten.map(e => `<p>${e.text} (${e.datum})</p>`).join("");
+        }
+    </script>
+
+</body>
+
+</html>
