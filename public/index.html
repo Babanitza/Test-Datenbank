@@ -33,11 +33,40 @@
 
     <h2>Problem melden</h2>
 
-    <input id="name" placeholder="Name">
-    <input id="klasse" placeholder="Klasse (z.B. 6a)">
-    <textarea id="problem" placeholder="Problem" rows="3"></textarea>
-    <input id="pause" placeholder="Pause (z.B. Donnerstag, 1. große Pause)">
-    <input id="vertrauensschueler" placeholder="Vertrauensschüler">
+    <input id="Vorname" placeholder="Vorname">
+    <input id="Nachname" placeholder="Nachname">
+    <input id="Klasse" placeholder="Klasse">
+    <input id="E_Mail" placeholder="E-Mail">
+    <input id="Telefonnummer" placeholder="Telefonnummer">
+    <input id="Strasse" placeholder="Strasse">
+    <input id="Ort" placeholder="Ort">
+    <input id="Artikel_1" placeholder="Artikel 1">
+    <input id="Logo_1" placeholder="Logo 1">
+    <input id="Logo_Platzierung_1" placeholder="Logo-Platzierung 1">
+    <input id="Groesse_1" placeholder="Größe 1">
+    <input id="Anzahl_1" placeholder="Anzahl 1">
+    <input id="Einzelpreis_1" placeholder="Einzelpreis 1">
+    <input id="Kosten_1" placeholder="Kosten 1">
+    <input id="Artikel_2" placeholder="Artikel 2">
+    <input id="Logo_2" placeholder="Logo 2">
+    <input id="Logo_Platzierung_2" placeholder="Logo-Platzierung 2">
+    <input id="Groesse_2" placeholder="Größe 2">
+    <input id="Anzahl_2" placeholder="Anzahl 2">
+    <input id="Einzelpreis_2" placeholder="Einzelpreis 2">
+    <input id="Kosten_2" placeholder="Kosten 2">
+    <input id="Artikel_3" placeholder="Artikel 3">
+    <input id="Logo_3" placeholder="Logo 3">
+    <input id="Logo_Platzierung_3" placeholder="Logo-Platzierung 3">
+    <input id="Groesse_3" placeholder="Größe 3">
+    <input id="Anzahl_3" placeholder="Anzahl 3">
+    <input id="Einzelpreis_3" placeholder="Einzelpreis 3">
+    <input id="Kosten_3" placeholder="Kosten 3">
+    <input id="Gesamtkosten" placeholder="Gesamtkosten">
+    <input id="Rechnung_verschickt" placeholder="Rechnung verschickt">
+    <input id="Bezahlt_am" placeholder="Bezahlt am">
+    <input id="Erledigt" placeholder="Erledigt">
+
+
 
     <button onclick="speichern()">Speichern</button>
     <button onclick="laden()">Alle anzeigen</button>
@@ -49,30 +78,91 @@
         const API = "https://test-datenbank-production.up.railway.app/api";
 
         async function speichern() {
-            const name = document.getElementById("name").value.trim();
-            const klasse = document.getElementById("klasse").value.trim();
-            const problem = document.getElementById("problem").value.trim();
-            const pause = document.getElementById("pause").value.trim();
-            const vertrauensschueler = document.getElementById("vertrauensschueler").value.trim();
+            const vorname = document.getElementById("Vorname").value.trim();
+            const nachname = document.getElementById("Nachname").value.trim();
+            const klasse = document.getElementById("Klasse").value.trim();
+            const e_mail = document.getElementById("E_Mail").value.trim();
+            const telefonnummer = document.getElementById("Telefonnummer").value.trim();
+            const strasse = document.getElementById("Strasse").value.trim();
+            const ort = document.getElementById("Ort").value.trim();
+            const artikel_1 = document.getElementById("Artikel_1").value.trim();
+            const logo_1 = document.getElementById("Logo_1").value.trim();
+            const logo_platzierung_1 = document.getElementById("Logo_Platzierung_1").value.trim();
+            const groesse_1 = document.getElementById("Groesse_1").value.trim();
+            const anzahl_1 = document.getElementById("Anzahl_1").value.trim();
+            const einzelpreis_1 = document.getElementById("Einzelpreis_1").value.trim();
+            const kosten_1 = document.getElementById("Kosten_1").value.trim();
+            const artikel_2 = document.getElementById("Artikel_2").value.trim();
+            const logo_2 = document.getElementById("Logo_2").value.trim();
+            const logo_platzierung_2 = document.getElementById("Logo_Platzierung_2").value.trim();
+            const groesse_2 = document.getElementById("Groesse_2").value.trim();
+            const anzahl_2 = document.getElementById("Anzahl_2").value.trim();
+            const einzelpreis_2 = document.getElementById("Einzelpreis_2").value.trim();
+            const kosten_2 = document.getElementById("Kosten_2").value.trim();
+            const artikel_3 = document.getElementById("Artikel_3").value.trim();
+            const logo_3 = document.getElementById("Logo_3").value.trim();
+            const logo_platzierung_3 = document.getElementById("Logo_Platzierung_3").value.trim();
+            const groesse_3 = document.getElementById("Groesse_3").value.trim();
+            const anzahl_3 = document.getElementById("Anzahl_3").value.trim();
+            const einzelpreis_3 = document.getElementById("Einzelpreis_3").value.trim();
+            const kosten_3 = document.getElementById("Kosten_3").value.trim();
+            const gesamtkosten = document.getElementById("Gesamtkosten").value.trim();
+            const rechnung_verschickt = document.getElementById("Rechnung_verschickt").value.trim();
+            const bezahlt_am = document.getElementById("Bezahlt_am").value.trim();
+            const erledigt = document.getElementById("Erledigt").value.trim();
 
-            if (!name || !klasse || !problem || !pause) {
-                return alert("Bitte alle Felder ausfüllen!");
+            if (!vorname || !nachname || !klasse) {
+                return alert("Bitte mindestens Vorname, Nachname und Klasse ausfüllen!");
             }
 
             try {
-                await fetch(API + "/probleme", {
+                await fetch(API + "/bestellungen", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ name, klasse, problem, pause, vertrauensschueler })
+                    body: JSON.stringify({
+                        vorname, nachname, klasse, e_mail, telefonnummer, strasse, ort,
+                        artikel_1, logo_1, logo_platzierung_1, groesse_1, anzahl_1, einzelpreis_1, kosten_1,
+                        artikel_2, logo_2, logo_platzierung_2, groesse_2, anzahl_2, einzelpreis_2, kosten_2,
+                        artikel_3, logo_3, logo_platzierung_3, groesse_3, anzahl_3, einzelpreis_3, kosten_3,
+                        gesamtkosten, rechnung_verschickt, bezahlt_am, erledigt
+                    })
                 });
 
                 alert("Gespeichert!");
 
-                document.getElementById("name").value = "";
-                document.getElementById("klasse").value = "";
-                document.getElementById("problem").value = "";
-                document.getElementById("pause").value = "";
-                document.getElementById("vertrauensschueler").value = "";
+                // Clear all inputs
+                document.getElementById("Vorname").value = "";
+                document.getElementById("Nachname").value = "";
+                document.getElementById("Klasse").value = "";
+                document.getElementById("E_Mail").value = "";
+                document.getElementById("Telefonnummer").value = "";
+                document.getElementById("Strasse").value = "";
+                document.getElementById("Ort").value = "";
+                document.getElementById("Artikel_1").value = "";
+                document.getElementById("Logo_1").value = "";
+                document.getElementById("Logo_Platzierung_1").value = "";
+                document.getElementById("Groesse_1").value = "";
+                document.getElementById("Anzahl_1").value = "";
+                document.getElementById("Einzelpreis_1").value = "";
+                document.getElementById("Kosten_1").value = "";
+                document.getElementById("Artikel_2").value = "";
+                document.getElementById("Logo_2").value = "";
+                document.getElementById("Logo_Platzierung_2").value = "";
+                document.getElementById("Groesse_2").value = "";
+                document.getElementById("Anzahl_2").value = "";
+                document.getElementById("Einzelpreis_2").value = "";
+                document.getElementById("Kosten_2").value = "";
+                document.getElementById("Artikel_3").value = "";
+                document.getElementById("Logo_3").value = "";
+                document.getElementById("Logo_Platzierung_3").value = "";
+                document.getElementById("Groesse_3").value = "";
+                document.getElementById("Anzahl_3").value = "";
+                document.getElementById("Einzelpreis_3").value = "";
+                document.getElementById("Kosten_3").value = "";
+                document.getElementById("Gesamtkosten").value = "";
+                document.getElementById("Rechnung_verschickt").value = "";
+                document.getElementById("Bezahlt_am").value = "";
+                document.getElementById("Erledigt").value = "";
 
             } catch (err) {
                 alert("Fehler beim Speichern");
@@ -82,15 +172,21 @@
 
         async function laden() {
             try {
-                const daten = await fetch(API + "/probleme").then(r => r.json());
+                const daten = await fetch(API + "/bestellungen").then(r => r.json());
 
                 document.getElementById("ausgabe").innerHTML =
                     daten.map(e => `
                         <p>
-                            <strong>${e.name}</strong> (${e.klasse})<br>
-                            <em>${e.pause}</em><br><br>
-                            ${e.problem}<br>
-                            <small>Vertrauensschüler: ${e.vertrauensschueler || "—"}</small>
+                            <strong>${e.vorname} ${e.nachname}</strong> (${e.klasse})<br>
+                            <em>E-Mail: ${e.e_mail || "—"} | Tel: ${e.telefonnummer || "—"}</em><br>
+                            <em>Adresse: ${e.strasse || "—"}, ${e.ort || "—"}</em><br><br>
+                            <strong>Artikel 1:</strong> ${e.artikel_1 || "—"} | Logo: ${e.logo_1 || "—"} | Platzierung: ${e.logo_platzierung_1 || "—"} | Größe: ${e.groesse_1 || "—"} | Anzahl: ${e.anzahl_1 || "—"} | Preis: ${e.einzelpreis_1 || "—"} | Kosten: ${e.kosten_1 || "—"}<br>
+                            <strong>Artikel 2:</strong> ${e.artikel_2 || "—"} | Logo: ${e.logo_2 || "—"} | Platzierung: ${e.logo_platzierung_2 || "—"} | Größe: ${e.groesse_2 || "—"} | Anzahl: ${e.anzahl_2 || "—"} | Preis: ${e.einzelpreis_2 || "—"} | Kosten: ${e.kosten_2 || "—"}<br>
+                            <strong>Artikel 3:</strong> ${e.artikel_3 || "—"} | Logo: ${e.logo_3 || "—"} | Platzierung: ${e.logo_platzierung_3 || "—"} | Größe: ${e.groesse_3 || "—"} | Anzahl: ${e.anzahl_3 || "—"} | Preis: ${e.einzelpreis_3 || "—"} | Kosten: ${e.kosten_3 || "—"}<br>
+                            <strong>Gesamtkosten:</strong> ${e.gesamtkosten || "—"}<br>
+                            <strong>Rechnung verschickt:</strong> ${e.rechnung_verschickt || "—"}<br>
+                            <strong>Bezahlt am:</strong> ${e.bezahlt_am || "—"}<br>
+                            <strong>Erledigt:</strong> ${e.erledigt || "—"}
                         </p>
                     `).join("");
 

@@ -23,19 +23,37 @@ const pool = mysql.createPool({
 });
 
 // ------------------------------------------------------
-// POST: Problem speichern
+// POST: Bestellung speichern
 // ------------------------------------------------------
-app.post("/api/probleme", async (req, res) => {
-  const { name, klasse, problem, pause, vertrauensschueler } = req.body;
+app.post("/api/bestellungen", async (req, res) => {
+  const {
+    vorname, nachname, klasse, e_mail, telefonnummer, strasse, ort,
+    artikel_1, logo_1, logo_platzierung_1, groesse_1, anzahl_1, einzelpreis_1, kosten_1,
+    artikel_2, logo_2, logo_platzierung_2, groesse_2, anzahl_2, einzelpreis_2, kosten_2,
+    artikel_3, logo_3, logo_platzierung_3, groesse_3, anzahl_3, einzelpreis_3, kosten_3,
+    gesamtkosten, rechnung_verschickt, bezahlt_am, erledigt
+  } = req.body;
 
-  if (!name || !klasse || !problem || !pause) {
-    return res.status(400).json({ error: "Fehlende Felder" });
+  if (!vorname || !nachname || !klasse) {
+    return res.status(400).json({ error: "Fehlende Felder: Vorname, Nachname, Klasse erforderlich" });
   }
 
   try {
     await pool.query(
-      "INSERT INTO Probleme (name, klasse, problem, pause, vertrauensschueler) VALUES (?, ?, ?, ?, ?)",
-      [name, klasse, problem, pause, vertrauensschueler]
+      `INSERT INTO Bestellungen (
+        vorname, nachname, klasse, e_mail, telefonnummer, strasse, ort,
+        artikel_1, logo_1, logo_platzierung_1, groesse_1, anzahl_1, einzelpreis_1, kosten_1,
+        artikel_2, logo_2, logo_platzierung_2, groesse_2, anzahl_2, einzelpreis_2, kosten_2,
+        artikel_3, logo_3, logo_platzierung_3, groesse_3, anzahl_3, einzelpreis_3, kosten_3,
+        gesamtkosten, rechnung_verschickt, bezahlt_am, erledigt
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        vorname, nachname, klasse, e_mail, telefonnummer, strasse, ort,
+        artikel_1, logo_1, logo_platzierung_1, groesse_1, anzahl_1, einzelpreis_1, kosten_1,
+        artikel_2, logo_2, logo_platzierung_2, groesse_2, anzahl_2, einzelpreis_2, kosten_2,
+        artikel_3, logo_3, logo_platzierung_3, groesse_3, anzahl_3, einzelpreis_3, kosten_3,
+        gesamtkosten, rechnung_verschickt, bezahlt_am, erledigt
+      ]
     );
 
     res.json({ ok: true });
@@ -46,12 +64,12 @@ app.post("/api/probleme", async (req, res) => {
 });
 
 // ------------------------------------------------------
-// GET: Alle Probleme laden
+// GET: Alle Bestellungen laden
 // ------------------------------------------------------
-app.get("/api/probleme", async (req, res) => {
+app.get("/api/bestellungen", async (req, res) => {
   try {
     const [rows] = await pool.query(
-      "SELECT * FROM Probleme ORDER BY id DESC"
+      "SELECT * FROM Bestellungen ORDER BY id DESC"
     );
     res.json(rows);
   } catch (err) {
