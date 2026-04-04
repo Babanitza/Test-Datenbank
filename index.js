@@ -1,8 +1,10 @@
 import express from "express";
 import mysql from "mysql2/promise";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // MySQL Pool
 const pool = mysql.createPool({
@@ -12,24 +14,33 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-// Test der Verbindung
-(async () => {
-  try {
-    const conn = await pool.getConnection();
-    console.log("MySQL connected successfully");
-    conn.release();
-  } catch (err) {
-    console.error("MySQL connection failed:", err);
-  }
-})();
+// POST: Eintrag speichern
+app.post("/api/eintrag", async (req, res) => {
+  const { text } = req.body;
 
-// Beispielroute
-app.get("/", async (req, res) => {
-  res.send("Backend läuft und ist mit MySQL verbunden!");
+  try {
+    await pool.query(
+      "INSERT INTO eintraege (text, datum) VALUES (?, NOW())",
+      [text]
+    );
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Fehler beim Speichern" });
+  }
+});
+
+// GET: Alle Einträge laden
+app.get("/api/eintrag", async (req, res) => {
+  try {
+    const [rows] = await pool.query("SELECT * FROM eintraege ORDER BY id DESC");
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Fehler beim Laden" });
+  }
 });
 
 // Server starten
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server läuft auf Port ${PORT}`);
-});
+app.listen(PORT, () => console.log("Server läuft auf Port", PORT));
