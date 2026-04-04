@@ -1,6 +1,10 @@
+import express from "express";
 import mysql from "mysql2/promise";
 
-// Verbindungspool erstellen
+const app = express();
+app.use(express.json());
+
+// MySQL Pool
 const pool = mysql.createPool({
   uri: process.env.MYSQL_URL,
   waitForConnections: true,
@@ -8,15 +12,24 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-// Test der Verbindung beim Start
+// Test der Verbindung
 (async () => {
   try {
-    const connection = await pool.getConnection();
+    const conn = await pool.getConnection();
     console.log("MySQL connected successfully");
-    connection.release();
-  } catch (error) {
-    console.error("MySQL connection failed:", error);
+    conn.release();
+  } catch (err) {
+    console.error("MySQL connection failed:", err);
   }
 })();
 
-export default pool;
+// Beispielroute
+app.get("/", async (req, res) => {
+  res.send("Backend läuft und ist mit MySQL verbunden!");
+});
+
+// Server starten
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server läuft auf Port ${PORT}`);
+});
