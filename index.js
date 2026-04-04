@@ -42,5 +42,5 @@ app.get("/api/eintrag", async (req, res) => {
 });
 
 // Server starten
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.MYSQLPORT || 3000;
 app.listen(PORT, () => console.log("Server läuft auf Port", PORT));
