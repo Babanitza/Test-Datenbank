@@ -34,7 +34,7 @@ app.post("/api/probleme", async (req, res) => {
 
   try {
     await pool.query(
-      "INSERT INTO Probleme (name, klasse, problem, pause, vertrauensschueler) VALUES (?, ?, ?, ?, ?)",
+      "INSERT INTO Vertrauensschueler (name, klasse, problem, pause, vertrauensschueler) VALUES (?, ?, ?, ?, ?)",
       [name, klasse, problem, pause, vertrauensschueler]
     );
 
