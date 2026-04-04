@@ -4,36 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datenbank</title>
+    <title>Datenbank Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input {
+            padding: 8px;
+            width: 250px;
+        }
+        button {
+            padding: 8px 12px;
+            margin-left: 5px;
+        }
+        #ausgabe p {
+            background: #f0f0f0;
+            padding: 8px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
+
+    <h2>Datenbank Test</h2>
+
     <input id="text" placeholder="Etwas eintragen">
     <button onclick="speichern()">Speichern</button>
     <button onclick="laden()">Alle anzeigen</button>
 
+    <h3>Ausgabe:</h3>
     <div id="ausgabe"></div>
 
     <script>
-        const API = "https://test-datenbank-production.up.railway.app/api";
+        // ❗ HIER DEINE BACKEND-URL EINTRAGEN
+        const API = "https://DEIN-BACKEND.railway.app/api";
 
         async function speichern() {
-            const text = document.getElementById("text").value;
+            const text = document.getElementById("text").value.trim();
+            if (!text) return alert("Bitte Text eingeben!");
 
-            await fetch(API + "/eintrag", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ text })
-            });
+            try {
+                await fetch(API + "/eintrag", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ text })
+                });
 
-            alert("Gespeichert!");
+                alert("Gespeichert!");
+                document.getElementById("text").value = "";
+            } catch (err) {
+                alert("Fehler beim Speichern");
+                console.error(err);
+            }
         }
 
         async function laden() {
-            const daten = await fetch(API + "/eintrag").then(r => r.json());
+            try {
+                const daten = await fetch(API + "/eintrag").then(r => r.json());
 
-            document.getElementById("ausgabe").innerHTML =
-                daten.map(e => `<p>${e.text} (${e.datum})</p>`).join("");
+                document.getElementById("ausgabe").innerHTML =
+                    daten.map(e => `<p>${e.text} <br><small>${e.datum}</small></p>`).join("");
+
+            } catch (err) {
+                alert("Fehler beim Laden");
+                console.error(err);
+            }
         }
     </script>
 
