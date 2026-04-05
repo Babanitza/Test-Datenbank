@@ -46,21 +46,22 @@
     <input id="Farbe_1" placeholder="Farbe 1">
     <input id="Groesse_1" placeholder="Größe 1">
     <input id="Anzahl_1" placeholder="Anzahl 1">
-    <input id="Kosten_1" placeholder="Kosten 1">
+    <h3 id="Kosten_1">Kosten 1: </h3>
     <input id="Artikel_2" placeholder="Artikel 2">
     <input id="Logo_2" placeholder="Logo 2">
     <input id="Logo_Platzierung_2" placeholder="Logo-Platzierung 2">
     <input id="Farbe_2" placeholder="Farbe 2">
     <input id="Groesse_2" placeholder="Größe 2">
     <input id="Anzahl_2" placeholder="Anzahl 2">
-    <input id="Kosten_2" placeholder="Kosten 2">
+    <h3 id="Kosten_2">Kosten 2: </h3>
     <input id="Artikel_3" placeholder="Artikel 3">
     <input id="Logo_3" placeholder="Logo 3">
     <input id="Logo_Platzierung_3" placeholder="Logo-Platzierung 3">
     <input id="Farbe_3" placeholder="Farbe 3">
     <input id="Groesse_3" placeholder="Größe 3">
     <input id="Anzahl_3" placeholder="Anzahl 3">
-    <input id="Kosten_3" placeholder="Kosten 3">
+    <h3 id="Kosten_3">Kosten 3: </h3>
+    <h3 id="Gesamtkosten">Gesamtkosten: </h3>
 
 
 
@@ -107,6 +108,7 @@
                 }
             }
             const kosten_1 = einzelpreis_1 * anzahl_1;
+            document.getElementById("Kosten_1").innerHTML = `Kosten 1: ${kosten_1}`;
             const artikel_2 = document.getElementById("Artikel_2").value.trim();
             const logo_2 = document.getElementById("Logo_2").value.trim();
             const logo_platzierung_2 = document.getElementById("Logo_Platzierung_2").value.trim() || "";
@@ -126,6 +128,7 @@
                 }
             }
             const kosten_2 = einzelpreis_2 * anzahl_2;
+            document.getElementById("Kosten_2").innerHTML = `Kosten 2: ${kosten_2}`;
             const artikel_3 = document.getElementById("Artikel_3").value.trim() || "";
             const logo_3 = document.getElementById("Logo_3").value.trim() || "";
             const logo_platzierung_3 = document.getElementById("Logo_Platzierung_3").value.trim() || "";
@@ -145,7 +148,9 @@
                 }
             }
             const kosten_3 = einzelpreis_3 * anzahl_3;
+            document.getElementById("Kosten_3").innerHTML = `Kosten 3: ${kosten_3}`;
             const gesamtkosten = `${kosten_1 + kosten_2 + kosten_3} €`;
+            document.getElementById("Gesamtkosten").innerHTML = `Gesamtkosten: ${gesamtkosten}`;
             const rechnung_verschickt = "Nein";
             const bezahlt_am = "";
             const erledigt = "Nein";
