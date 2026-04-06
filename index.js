@@ -79,6 +79,37 @@ app.get("/api/bestellungen", async (req, res) => {
 });
 
 // ------------------------------------------------------
+// GET: Export für Excel (CSV)
+// ------------------------------------------------------
+app.get("/export/bestellungen.csv", async (req, res) => {
+  try {
+    const [rows] = await pool.query(
+      "SELECT * FROM Bestellungen ORDER BY id DESC"
+    );
+
+    if (rows.length === 0) {
+      return res.send("Keine Daten");
+    }
+
+    const header = Object.keys(rows[0]).join(";");
+    const csvRows = rows.map(r =>
+      Object.values(r).map(v => (v === null ? "" : v)).join(";")
+    );
+
+    const csv = [header, ...csvRows].join("\n");
+
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader("Content-Disposition", "attachment; filename=bestellungen.csv");
+    res.send(csv);
+  } catch (err) {
+    console.error("Fehler beim CSV-Export:", err);
+    res.status(500).send("Fehler beim CSV-Export");
+  }
+});
+
+
+
+// ------------------------------------------------------
 // Server starten
 // ------------------------------------------------------
 const PORT = process.env.PORT || 3000;
