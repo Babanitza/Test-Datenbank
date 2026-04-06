@@ -46,21 +46,22 @@
     <input id="Farbe_1" placeholder="Farbe 1">
     <input id="Groesse_1" placeholder="Größe 1">
     <input id="Anzahl_1" placeholder="Anzahl 1">
-    <input id="Kosten_1" placeholder="Kosten 1">
+    <h3 id="Kosten_1">Kosten 1: </h3>
     <input id="Artikel_2" placeholder="Artikel 2">
     <input id="Logo_2" placeholder="Logo 2">
     <input id="Logo_Platzierung_2" placeholder="Logo-Platzierung 2">
     <input id="Farbe_2" placeholder="Farbe 2">
     <input id="Groesse_2" placeholder="Größe 2">
     <input id="Anzahl_2" placeholder="Anzahl 2">
-    <input id="Kosten_2" placeholder="Kosten 2">
+    <h3 id="Kosten_2">Kosten 2: </h3>
     <input id="Artikel_3" placeholder="Artikel 3">
     <input id="Logo_3" placeholder="Logo 3">
     <input id="Logo_Platzierung_3" placeholder="Logo-Platzierung 3">
     <input id="Farbe_3" placeholder="Farbe 3">
     <input id="Groesse_3" placeholder="Größe 3">
     <input id="Anzahl_3" placeholder="Anzahl 3">
-    <input id="Kosten_3" placeholder="Kosten 3">
+    <h3 id="Kosten_3">Kosten 3: </h3>
+    <h3 id="Gesamtkosten">Gesamtkosten: </h3>
 
 
 
@@ -80,7 +81,7 @@
         };
         const API = "https://test-datenbank-production.up.railway.app/api";
 
-        async function speichern() {
+        document.addEventListener("change", function(){
             const vorname = document.getElementById("Vorname").value.trim();
             const nachname = document.getElementById("Nachname").value.trim();
             const klasse = document.getElementById("Klasse").value.trim();
@@ -89,11 +90,11 @@
             const strasse = document.getElementById("Strasse").value.trim();
             const ort = document.getElementById("Ort").value.trim();
             const artikel_1 = document.getElementById("Artikel_1").value.trim();
-            const logo_1 = document.getElementById("Logo_1").value.trim();
-            const logo_platzierung_1 = document.getElementById("Logo_Platzierung_1").value.trim();
-            const farbe_1 = document.getElementById("Farbe_1").value.trim();
-            const groesse_1 = document.getElementById("Groesse_1").value.trim();
-            const anzahl_1 = document.getElementById("Anzahl_1").value.trim();
+            const logo_1 = document.getElementById("Logo_1").value.trim() || "";
+            const logo_platzierung_1 = document.getElementById("Logo_Platzierung_1").value.trim() || "";
+            const farbe_1 = document.getElementById("Farbe_1").value.trim() || "";
+            const groesse_1 = document.getElementById("Groesse_1").value.trim() || "";
+            const anzahl_1 = document.getElementById("Anzahl_1").value.trim() || 0;
             let einzelpreis_1;
             if (groesse_1 == "3XL"){
                 einzelpreis_1 = preise[artikel_1] + 4 || 0;
@@ -107,12 +108,13 @@
                 }
             }
             const kosten_1 = einzelpreis_1 * anzahl_1;
+            document.getElementById("Kosten_1").innerHTML = `Kosten 1: ${kosten_1}`;
             const artikel_2 = document.getElementById("Artikel_2").value.trim();
             const logo_2 = document.getElementById("Logo_2").value.trim();
-            const logo_platzierung_2 = document.getElementById("Logo_Platzierung_2").value.trim();
-            const farbe_2 = document.getElementById("Farbe_2").value.trim();
-            const groesse_2 = document.getElementById("Groesse_2").value.trim();
-            const anzahl_2 = document.getElementById("Anzahl_2").value.trim();
+            const logo_platzierung_2 = document.getElementById("Logo_Platzierung_2").value.trim() || "";
+            const farbe_2 = document.getElementById("Farbe_2").value.trim() || "";
+            const groesse_2 = document.getElementById("Groesse_2").value.trim() || "";
+            const anzahl_2 = document.getElementById("Anzahl_2").value.trim() || 0;
             let einzelpreis_2;
             if (groesse_2 == "3XL"){
                 einzelpreis_2 = preise[artikel_2] + 4 || 0;
@@ -126,12 +128,13 @@
                 }
             }
             const kosten_2 = einzelpreis_2 * anzahl_2;
-            const artikel_3 = document.getElementById("Artikel_3").value.trim();
-            const logo_3 = document.getElementById("Logo_3").value.trim();
-            const logo_platzierung_3 = document.getElementById("Logo_Platzierung_3").value.trim();
-            const farbe_3 = document.getElementById("Farbe_3").value.trim();
-            const groesse_3 = document.getElementById("Groesse_3").value.trim();
-            const anzahl_3 = document.getElementById("Anzahl_3").value.trim();
+            document.getElementById("Kosten_2").innerHTML = `Kosten 2: ${kosten_2}`;
+            const artikel_3 = document.getElementById("Artikel_3").value.trim() || "";
+            const logo_3 = document.getElementById("Logo_3").value.trim() || "";
+            const logo_platzierung_3 = document.getElementById("Logo_Platzierung_3").value.trim() || "";
+            const farbe_3 = document.getElementById("Farbe_3").value.trim() || "";
+            const groesse_3 = document.getElementById("Groesse_3").value.trim() || "";
+            const anzahl_3 = document.getElementById("Anzahl_3").value.trim() || 0;
             let einzelpreis_3;
             if (groesse_3 == "3XL"){
                 einzelpreis_3 = preise[artikel_3] + 4 || 0;
@@ -145,14 +148,91 @@
                 }
             }
             const kosten_3 = einzelpreis_3 * anzahl_3;
+            document.getElementById("Kosten_3").innerHTML = `Kosten 3: ${kosten_3}`;
             const gesamtkosten = `${kosten_1 + kosten_2 + kosten_3} €`;
+            document.getElementById("Gesamtkosten").innerHTML = `Gesamtkosten: ${gesamtkosten}`;
+            const rechnung_verschickt = "Nein";
+            const bezahlt_am = "";
+            const erledigt = "Nein";
+        }, false);
+        
+        async function speichern() {
+            const vorname = document.getElementById("Vorname").value.trim();
+            const nachname = document.getElementById("Nachname").value.trim();
+            const klasse = document.getElementById("Klasse").value.trim();
+            const e_mail = document.getElementById("E_Mail").value.trim();
+            const telefonnummer = document.getElementById("Telefonnummer").value.trim();
+            const strasse = document.getElementById("Strasse").value.trim();
+            const ort = document.getElementById("Ort").value.trim();
+            const artikel_1 = document.getElementById("Artikel_1").value.trim();
+            const logo_1 = document.getElementById("Logo_1").value.trim() || "";
+            const logo_platzierung_1 = document.getElementById("Logo_Platzierung_1").value.trim() || "";
+            const farbe_1 = document.getElementById("Farbe_1").value.trim() || "";
+            const groesse_1 = document.getElementById("Groesse_1").value.trim() || "";
+            const anzahl_1 = document.getElementById("Anzahl_1").value.trim() || 0;
+            let einzelpreis_1;
+            if (groesse_1 == "3XL"){
+                einzelpreis_1 = preise[artikel_1] + 4 || 0;
+                if (logo_1 != ""){
+                    einzelpreis_1 += 4;
+                }
+            }else{
+                einzelpreis_1 = preise[artikel_1] || 0;
+                if (logo_1 != ""){
+                    einzelpreis_1 += 4;
+                }
+            }
+            const kosten_1 = einzelpreis_1 * anzahl_1;
+            document.getElementById("Kosten_1").innerHTML = `Kosten 1: ${kosten_1} €`;
+            const artikel_2 = document.getElementById("Artikel_2").value.trim();
+            const logo_2 = document.getElementById("Logo_2").value.trim();
+            const logo_platzierung_2 = document.getElementById("Logo_Platzierung_2").value.trim() || "";
+            const farbe_2 = document.getElementById("Farbe_2").value.trim() || "";
+            const groesse_2 = document.getElementById("Groesse_2").value.trim() || "";
+            const anzahl_2 = document.getElementById("Anzahl_2").value.trim() || 0;
+            let einzelpreis_2;
+            if (groesse_2 == "3XL"){
+                einzelpreis_2 = preise[artikel_2] + 4 || 0;
+                if (logo_2 != ""){
+                    einzelpreis_2 += 4;
+                }
+            }else{
+                 einzelpreis_2 = preise[artikel_2] || 0;
+                 if (logo_2 != ""){
+                    einzelpreis_2 += 4;
+                }
+            }
+            const kosten_2 = einzelpreis_2 * anzahl_2;
+            document.getElementById("Kosten_2").innerHTML = `Kosten 2: ${kosten_2} €`;
+            const artikel_3 = document.getElementById("Artikel_3").value.trim() || "";
+            const logo_3 = document.getElementById("Logo_3").value.trim() || "";
+            const logo_platzierung_3 = document.getElementById("Logo_Platzierung_3").value.trim() || "";
+            const farbe_3 = document.getElementById("Farbe_3").value.trim() || "";
+            const groesse_3 = document.getElementById("Groesse_3").value.trim() || "";
+            const anzahl_3 = document.getElementById("Anzahl_3").value.trim() || 0;
+            let einzelpreis_3;
+            if (groesse_3 == "3XL"){
+                einzelpreis_3 = preise[artikel_3] + 4 || 0;
+                if (logo_3 != ""){
+                    einzelpreis_3 += 4;
+                }
+            }else{
+                 einzelpreis_3 = preise[artikel_3] || 0;
+                 if (logo_3 != ""){
+                    einzelpreis_3 += 4;
+                }
+            }
+            const kosten_3 = einzelpreis_3 * anzahl_3;
+            document.getElementById("Kosten_3").innerHTML = `Kosten 3: ${kosten_3} €`;
+            const gesamtkosten = `${kosten_1 + kosten_2 + kosten_3} €`;
+            document.getElementById("Gesamtkosten").innerHTML = `Gesamtkosten: ${gesamtkosten} €`;
             const rechnung_verschickt = "Nein";
             const bezahlt_am = "";
             const erledigt = "Nein";
 
-            if (!vorname || !nachname || !klasse) {
-                return alert("Bitte mindestens Vorname, Nachname und Klasse ausfüllen!");
-            }
+            if (!vorname || !nachname || !klasse || !e_mail || !telefonnummer || !strasse || !ort || !artikel_1) {
+                return alert("Bitte mindestens Kontaktdaten und Artikel 1 ausfüllen");
+            }else{
 
             try {
                 await fetch(API + "/bestellungen", {
@@ -183,25 +263,27 @@
                 document.getElementById("Farbe_1").value = "";
                 document.getElementById("Groesse_1").value = "";
                 document.getElementById("Anzahl_1").value = "";
-                document.getElementById("Kosten_1").value = "";
+                document.getElementById("Kosten_1").innerHTML = "";
                 document.getElementById("Artikel_2").value = "";
                 document.getElementById("Logo_2").value = "";
                 document.getElementById("Logo_Platzierung_2").value = "";
                 document.getElementById("Farbe_2").value = "";
                 document.getElementById("Groesse_2").value = "";
                 document.getElementById("Anzahl_2").value = "";
-                document.getElementById("Kosten_2").value = "";
+                document.getElementById("Kosten_2").innerHTML = "";
                 document.getElementById("Artikel_3").value = "";
                 document.getElementById("Logo_3").value = "";
                 document.getElementById("Logo_Platzierung_3").value = "";
                 document.getElementById("Farbe_3").value = "";
                 document.getElementById("Groesse_3").value = "";
                 document.getElementById("Anzahl_3").value = "";
-                document.getElementById("Kosten_3").value = "";
+                document.getElementById("Kosten_3").innerHTML = "";
+                document.getElementById("Gesamtkosten").innerHTML = "";
 
             } catch (err) {
                 alert("Fehler beim Speichern");
                 console.error(err);
+            }
             }
         }
     </script>
