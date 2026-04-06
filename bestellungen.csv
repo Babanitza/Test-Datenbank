@@ -1,6 +1,7 @@
- ;Name;Klasse;E_Mail;Telefonnummer;Adresse;Artikel_1;Logo_1;Logo_Platzierung_1;Farbe_1;Groesse_1;Anzahl_1;Einzelpreis_1;Kosten_1;Artikel_2;Logo_2;Logo_Platzierung_2;Farbe_2;Groesse_2;Anzahl_2;Einzelpreis_2;Kosten_2;Artikel_3;Logo_3;Logo_Platzierung_3;Farbe_3;Groesse_3;Anzahl_3;Einzelpreis_3;Kosten_3;Gesamtkosten;Rechnung_verschickt;Bezahlt_am;Erledigt
-11;Test;Test;Test@Test.com;1,24321E+11;Test2;Zip-Hoodie;;;Dusty Pink;S;1;37;37;;;;;;0;0;0;;;;;;0;0;0;37 €;Nein;;Nein
-10;asdasd;Test;Lukas.Bebnitz@t-online.de;1234567890;asdasd;Zip-Hoodie;;;Dusty Pink;S;1;37;37;;;;;;0;0;0;;;;;;0;0;0;37 €;Nein;;Nein
-9;Dies ist ein Test;Test;Test@Test.com;1234567890;Test Adresse;Hoodie;Dies ist ein Test;Platzierung: vorn;Emerald;L;1;36;36;;;;;;0;0;0;;;;;;0;0;0;36 €;Nein;;Nein
-8;Dies ist ein Test;Test;Test@Test.com;1234567890;Test Adresse;Hoodie;Dies ist ein Test;Platzierung: vorn;Emerald;L;1;36;36;;;;;;0;0;0;;;;;;0;0;0;36 €;Nein;;Nein
-7;Test;9l;Lukas.Bebnitz@t-online.de;1234567890;Test2;Zip-Hoodie;Lukas;Platzierung: hinten;Burgundy;M;1;41;41;;;;;;0;0;0;;;;;;0;0;0;41 €;Nein;;Nein
+id;Name;Klasse;E_Mail;Telefonnummer;Adresse;Artikel_1;Logo_1;Logo_Platzierung_1;Farbe_1;Groesse_1;Anzahl_1;Einzelpreis_1;Kosten_1;Artikel_2;Logo_2;Logo_Platzierung_2;Farbe_2;Groesse_2;Anzahl_2;Einzelpreis_2;Kosten_2;Artikel_3;Logo_3;Logo_Platzierung_3;Farbe_3;Groesse_3;Anzahl_3;Einzelpreis_3;Kosten_3;Gesamtkosten;Rechnung_verschickt;Bezahlt_am;Erledigt
+13;Test;Test;Test@Test.com;1,24321E+11;Test2;Sweater;Test;Platzierung: vorn;Dusty Pink;L;1;33;33;;;;;;0;0;0;;;;;;0;0;0;33;Nein;;Nein
+12;Test;Test;Test@Test.com;123456789;Test2;Hoodie;Test;Platzierung: vorn;Deep Black;S;1;36;36;;;;;;0;0;0;;;;;;0;0;0;36;Nein;;Nein
+11;Test;Test;Test@Test.com;1,24321E+11;Test2;Zip-Hoodie;;;Dusty Pink;S;1;37;37;;;;;;0;0;0;;;;;;0;0;0;37;Nein;;Nein
+10;asdasd;Test;Lukas.Bebnitz@t-online.de;1234567890;asdasd;Zip-Hoodie;;;Dusty Pink;S;1;37;37;;;;;;0;0;0;;;;;;0;0;0;37;Nein;;Nein
+9;Dies ist ein Test;Test;Test@Test.com;1234567890;Test Adresse;Hoodie;Dies ist ein Test;Platzierung: vorn;Emerald;L;1;36;36;;;;;;0;0;0;;;;;;0;0;0;36;Nein;;Nein
+8;Dies ist ein Test;Test;Test@Test.com;1234567890;Test Adresse;Hoodie;Dies ist ein Test;Platzierung: vorn;Emerald;L;1;36;36;;;;;;0;0;0;;;;;;0;0;0;36;Nein;;Nein
