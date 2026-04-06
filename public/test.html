@@ -3034,8 +3034,7 @@
                                                                                                     data-name="logo-1"><select
                                                                                                         class="wpcf7-form-control wpcf7-select"
                                                                                                         aria-invalid="false"
-                                                                                                        name="logo-1"
-                                                                                                        id="logo-1">
+                                                                                                        name="logo-1">
                                                                                                         <option
                                                                                                             value="">–
                                                                                                             Bitte
@@ -3305,8 +3304,7 @@
                                                                                                     data-name="logo-2"><select
                                                                                                         class="wpcf7-form-control wpcf7-select"
                                                                                                         aria-invalid="false"
-                                                                                                        name="logo-2"
-                                                                                                        id="logo-2">
+                                                                                                        name="logo-2">
                                                                                                         <option
                                                                                                             value="">–
                                                                                                             Bitte
@@ -3576,8 +3574,7 @@
                                                                                                     data-name="logo-3"><select
                                                                                                         class="wpcf7-form-control wpcf7-select"
                                                                                                         aria-invalid="false"
-                                                                                                        name="logo-3"
-                                                                                                        id="logo-3">
+                                                                                                        name="logo-3">
                                                                                                         <option
                                                                                                             value="">–
                                                                                                             Bitte
@@ -3661,7 +3658,7 @@
                                                                                                         value=""
                                                                                                         type="text"
                                                                                                         name="address-1"
-                                                                                                        id="adress"></span>
+                                                                                                        id="address"></span>
                                                                                             </label>
                                                                                         </p>
                                                                                         <p><label> Telefon<br>
@@ -4107,13 +4104,14 @@
             const klasse = document.getElementById("klasse").value.trim();
             const e_mail = document.getElementById("email").value.trim();
             const telefonnummer = document.getElementById("telefon").value.trim();
-            const adresse = document.getElementById("adress").value.trim();
-            const artikel_1 = document.getElementById("product-1").value.trim();
-            const logo_1 = document.getElementById("logo-text-1").value.trim() || "";
-            const logo_platzierung_1 = document.getElementById("logo-1").value.trim() || "";
-            const farbe_1 = document.getElementById("color-1").value.trim() || "";
-            const groesse_1 = document.getElementById("size-1").value.trim() || "";
-            const anzahl_1 = document.getElementById("count-1").value.trim() || 0;
+            const strasse = document.getElementById("adress").value.trim();
+            const ort = document.getElementById("ort").value.trim();
+            const artikel_1 = document.getElementById("artikel-1").value.trim();
+            const logo_1 = document.getElementById("Logo_1").value.trim() || "";
+            const logo_platzierung_1 = document.getElementById("Logo_Platzierung_1").value.trim() || "";
+            const farbe_1 = document.getElementById("Farbe_1").value.trim() || "";
+            const groesse_1 = document.getElementById("Groesse_1").value.trim() || "";
+            const anzahl_1 = document.getElementById("Anzahl_1").value.trim() || 0;
             let einzelpreis_1;
             if (groesse_1 == "3XL"){
                 einzelpreis_1 = preise[artikel_1] + 4 || 0;
@@ -4127,12 +4125,13 @@
                 }
             }
             const kosten_1 = einzelpreis_1 * anzahl_1;
-            const artikel_2 = document.getElementById("product-2").value.trim();
-            const logo_2 = document.getElementById("logo-text-2").value.trim() || "";
-            const logo_platzierung_2 = document.getElementById("logo-2").value.trim() || "";
-            const farbe_2 = document.getElementById("color-2").value.trim() || "";
-            const groesse_2 = document.getElementById("size-2").value.trim() || "";
-            const anzahl_2 = document.getElementById("count-2").value.trim() || 0;
+            document.getElementById("Kosten_1").innerHTML = `Kosten 1: ${kosten_1} €`;
+            const artikel_2 = document.getElementById("Artikel_2").value.trim();
+            const logo_2 = document.getElementById("Logo_2").value.trim();
+            const logo_platzierung_2 = document.getElementById("Logo_Platzierung_2").value.trim() || "";
+            const farbe_2 = document.getElementById("Farbe_2").value.trim() || "";
+            const groesse_2 = document.getElementById("Groesse_2").value.trim() || "";
+            const anzahl_2 = document.getElementById("Anzahl_2").value.trim() || 0;
             let einzelpreis_2;
             if (groesse_2 == "3XL"){
                 einzelpreis_2 = preise[artikel_2] + 4 || 0;
@@ -4146,12 +4145,13 @@
                 }
             }
             const kosten_2 = einzelpreis_2 * anzahl_2;
-            const artikel_3 = document.getElementById("product-3").value.trim() || "";
-            const logo_3 = document.getElementById("logo-text-3").value.trim() || "";
-            const logo_platzierung_3 = document.getElementById("logo-3").value.trim() || "";
-            const farbe_3 = document.getElementById("color-3").value.trim() || "";
-            const groesse_3 = document.getElementById("size-3").value.trim() || "";
-            const anzahl_3 = document.getElementById("count-3").value.trim() || 0;
+            document.getElementById("Kosten_2").innerHTML = `Kosten 2: ${kosten_2} €`;
+            const artikel_3 = document.getElementById("Artikel_3").value.trim() || "";
+            const logo_3 = document.getElementById("Logo_3").value.trim() || "";
+            const logo_platzierung_3 = document.getElementById("Logo_Platzierung_3").value.trim() || "";
+            const farbe_3 = document.getElementById("Farbe_3").value.trim() || "";
+            const groesse_3 = document.getElementById("Groesse_3").value.trim() || "";
+            const anzahl_3 = document.getElementById("Anzahl_3").value.trim() || 0;
             let einzelpreis_3;
             if (groesse_3 == "3XL"){
                 einzelpreis_3 = preise[artikel_3] + 4 || 0;
@@ -4165,7 +4165,9 @@
                 }
             }
             const kosten_3 = einzelpreis_3 * anzahl_3;
+            document.getElementById("Kosten_3").innerHTML = `Kosten 3: ${kosten_3} €`;
             const gesamtkosten = `${kosten_1 + kosten_2 + kosten_3} €`;
+            document.getElementById("Gesamtkosten").innerHTML = `Gesamtkosten: ${gesamtkosten} €`;
             const rechnung_verschickt = "Nein";
             const bezahlt_am = "";
             const erledigt = "Nein";
