@@ -570,7 +570,6 @@
     <script type="text/javascript"
         src="https://isarnwohld-schule.de/wp-content/themes/uncode/library/js/init.js?ver=492602629"
         id="uncode-init-js"></script>
-    <script></script>
     <link rel="https://api.w.org/" href="https://isarnwohld-schule.de/wp-json/">
     <link rel="alternate" title="JSON" type="application/json"
         href="https://isarnwohld-schule.de/wp-json/wp/v2/pages/118085">
@@ -591,12 +590,12 @@
                         }
                     }
                 }
+            }
 
-                if (document.getElementById("email").getAttribute("aria-invalid") === "true" && document.getElementById("email").value != "") {
-                    document.getElementsByClassName("check_formular_filled")[3].innerHTML = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
-                } else if (document.getElementById("email").value != "") {
-                    document.getElementsByClassName("check_formular_filled")[3].innerHTML = "";
-                }
+            if (document.getElementById("email").getAttribute("aria-invalid") === "true" && document.getElementById("email").value != "") {
+                document.getElementsByClassName("check_formular_filled")[3].innerHTML = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
+            } else if (document.getElementById("email").value != "") {
+                document.getElementsByClassName("check_formular_filled")[3].innerHTML = "";
             }
         });
 
@@ -1711,12 +1710,12 @@
                     document.getElementsByName("logo-1")[0].value = "";
                     document.getElementsByName("logo-1")[0].disabled = true;
                     document.getElementsByName("logo-text-1")[0].disabled = false;
-                }else if (valid_products_for_logos.includes(selectedProduct) == false) {
+                } else if (valid_products_for_logos.includes(selectedProduct) == false) {
                     document.getElementsByName("logo-1")[0].value = "";
                     document.getElementsByName("logo-1")[0].disabled = true;
                     document.getElementsByName("logo-text-1")[0].value = "";
                     document.getElementsByName("logo-text-1")[0].disabled = true;
-                }else{
+                } else {
                     document.getElementsByName("logo-1")[0].disabled = false;
                     document.getElementsByName("logo-text-1")[0].disabled = false;
                 }
@@ -1727,12 +1726,12 @@
                     document.getElementsByName("logo-2")[0].value = "";
                     document.getElementsByName("logo-2")[0].disabled = true;
                     document.getElementsByName("logo-text-2")[0].disabled = false;
-                }else if (valid_products_for_logos.includes(selectedProduct) == false) {
+                } else if (valid_products_for_logos.includes(selectedProduct) == false) {
                     document.getElementsByName("logo-2")[0].value = "";
                     document.getElementsByName("logo-2")[0].disabled = true;
                     document.getElementsByName("logo-text-2")[0].value = "";
                     document.getElementsByName("logo-text-2")[0].disabled = true;
-                }else{
+                } else {
                     document.getElementsByName("logo-2")[0].disabled = false;
                     document.getElementsByName("logo-text-2")[0].disabled = false;
                 }
@@ -1743,21 +1742,21 @@
                     document.getElementsByName("logo-3")[0].value = "";
                     document.getElementsByName("logo-3")[0].disabled = true;
                     document.getElementsByName("logo-text-3")[0].disabled = false;
-                }else if (valid_products_for_logos.includes(selectedProduct) == false) {
+                } else if (valid_products_for_logos.includes(selectedProduct) == false) {
                     document.getElementsByName("logo-3")[0].value = "";
                     document.getElementsByName("logo-3")[0].disabled = true;
                     document.getElementsByName("logo-text-3")[0].value = "";
                     document.getElementsByName("logo-text-3")[0].disabled = true;
-                }else{
+                } else {
                     document.getElementsByName("logo-3")[0].disabled = false;
                     document.getElementsByName("logo-text-3")[0].disabled = false;
                 }
             }
 
             function require_position() {
-                    if (document.getElementsByName("logo-text-1")[0].value != "" && document.getElementsByName("product-1")[0].value != "Turnbeutel" && document.getElementsByName("logo-1")[0].value == "") {
-                        document.getElementById("require_position_1").innerHTML = "Bitte fülle dieses Feld aus!";
-                    }
+                if (document.getElementsByName("logo-text-1")[0].value != "" && document.getElementsByName("product-1")[0].value != "Turnbeutel" && document.getElementsByName("logo-1")[0].value == "") {
+                    document.getElementById("require_position_1").innerHTML = "Bitte fülle dieses Feld aus!";
+                }
                 if (document.getElementsByName("logo-text-2")[0].value != "" && document.getElementsByName("product-2")[0].value != "Turnbeutel" && document.getElementsByName("logo-2")[0].value == "") {
                     document.getElementById("require_position_2").innerHTML = "Bitte fülle dieses Feld aus!";
                 }
@@ -4579,89 +4578,95 @@
                                                                                                 value="" type="text"
                                                                                                 name="total-cost"></span>
 
-                                                                                        <br><label> Name<br></label>
-                                                                                        <span
-                                                                                            class="wpcf7-form-control-wrap"
-                                                                                            data-name="your-name"><input
-                                                                                                size="40"
-                                                                                                maxlength="400"
-                                                                                                class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                                                                aria-required="true"
-                                                                                                aria-invalid="false"
-                                                                                                value="" type="text"
-                                                                                                name="your-name"
-                                                                                                id="name"></span>
-                                                                                        <span
-                                                                                            class="check_formular_filled"
-                                                                                            style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
 
-                                                                                        <br><label> Anschrift
-                                                                                            (gewünschte
-                                                                                            individuelle
-                                                                                            Anschrift)<br></label>
-                                                                                        <span
-                                                                                            class="wpcf7-form-control-wrap"
-                                                                                            data-name="address-1"><input
-                                                                                                size="40"
-                                                                                                maxlength="400"
-                                                                                                class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                                                                aria-required="true"
-                                                                                                aria-invalid="false"
-                                                                                                value="" type="text"
-                                                                                                name="address-1"
-                                                                                                id="adress"></span>
-                                                                                        <span
-                                                                                            class="check_formular_filled"
-                                                                                            style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
+                                                                                        <div id="formular">
+                                                                                            <br><label> Name<br></label>
+                                                                                            <span
+                                                                                                class="wpcf7-form-control-wrap"
+                                                                                                data-name="your-name"><input
+                                                                                                    size="40"
+                                                                                                    maxlength="400"
+                                                                                                    class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required formchange"
+                                                                                                    aria-required="true"
+                                                                                                    aria-invalid="false"
+                                                                                                    value="" type="text"
+                                                                                                    name="your-name"
+                                                                                                    id="name"></span>
+                                                                                            <span
+                                                                                                class="check_formular_filled"
+                                                                                                style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
 
-                                                                                        <br><label> Telefon<br></label>
-                                                                                        <span
-                                                                                            class="wpcf7-form-control-wrap"
-                                                                                            data-name="tel-464"><input
-                                                                                                size="40"
-                                                                                                maxlength="400"
-                                                                                                class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel"
-                                                                                                aria-required="true"
-                                                                                                aria-invalid="false"
-                                                                                                value="" type="tel"
-                                                                                                name="tel-464"
-                                                                                                id="telefon"></span>
-                                                                                        <span
-                                                                                            class="check_formular_filled"
-                                                                                            style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
+                                                                                            <br><label> Anschrift
+                                                                                                (gewünschte
+                                                                                                individuelle
+                                                                                                Anschrift)<br></label>
+                                                                                            <span
+                                                                                                class="wpcf7-form-control-wrap"
+                                                                                                data-name="address-1"><input
+                                                                                                    size="40"
+                                                                                                    maxlength="400"
+                                                                                                    class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required formchange"
+                                                                                                    aria-required="true"
+                                                                                                    aria-invalid="false"
+                                                                                                    value="" type="text"
+                                                                                                    name="address-1"
+                                                                                                    id="adress"></span>
+                                                                                            <span
+                                                                                                class="check_formular_filled"
+                                                                                                style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
 
-                                                                                        <br><label> E-Mail<br></label>
-                                                                                        <span
-                                                                                            class="wpcf7-form-control-wrap"
-                                                                                            data-name="your-email"><input
-                                                                                                size="40"
-                                                                                                maxlength="400"
-                                                                                                class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                                                                                                aria-required="true"
-                                                                                                aria-invalid="false"
-                                                                                                value="" type="email"
-                                                                                                name="your-email"
-                                                                                                id="email"></span>
-                                                                                        <span
-                                                                                            class="check_formular_filled"
-                                                                                            style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
+                                                                                            <br><label>
+                                                                                                Telefon<br></label>
+                                                                                            <span
+                                                                                                class="wpcf7-form-control-wrap"
+                                                                                                data-name="tel-464"><input
+                                                                                                    size="40"
+                                                                                                    maxlength="400"
+                                                                                                    class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel formchange"
+                                                                                                    aria-required="true"
+                                                                                                    aria-invalid="false"
+                                                                                                    value="" type="tel"
+                                                                                                    name="tel-464"
+                                                                                                    id="telefon"></span>
+                                                                                            <span
+                                                                                                class="check_formular_filled"
+                                                                                                style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
 
-                                                                                        <br><label> Klasse<br></label>
-                                                                                        <span
-                                                                                            class="wpcf7-form-control-wrap"
-                                                                                            data-name="klasse-1"><input
-                                                                                                size="40"
-                                                                                                maxlength="400"
-                                                                                                class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                                                                aria-required="true"
-                                                                                                aria-invalid="false"
-                                                                                                value="" type="text"
-                                                                                                name="klasse-1"
-                                                                                                id="klasse"></span>
-                                                                                        <span
-                                                                                            class="check_formular_filled"
-                                                                                            style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
+                                                                                            <br><label>
+                                                                                                E-Mail<br></label>
+                                                                                            <span
+                                                                                                class="wpcf7-form-control-wrap"
+                                                                                                data-name="your-email"><input
+                                                                                                    size="40"
+                                                                                                    maxlength="400"
+                                                                                                    class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email formchange"
+                                                                                                    aria-required="true"
+                                                                                                    aria-invalid="false"
+                                                                                                    value=""
+                                                                                                    type="email"
+                                                                                                    name="your-email"
+                                                                                                    id="email"></span>
+                                                                                            <span
+                                                                                                class="check_formular_filled"
+                                                                                                style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
 
+                                                                                            <br><label>
+                                                                                                Klasse<br></label>
+                                                                                            <span
+                                                                                                class="wpcf7-form-control-wrap"
+                                                                                                data-name="klasse-1"><input
+                                                                                                    size="40"
+                                                                                                    maxlength="400"
+                                                                                                    class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required formchange"
+                                                                                                    aria-required="true"
+                                                                                                    aria-invalid="false"
+                                                                                                    value="" type="text"
+                                                                                                    name="klasse-1"
+                                                                                                    id="klasse"></span>
+                                                                                            <span
+                                                                                                class="check_formular_filled"
+                                                                                                style="color:rgba(118, 144, 71); font-size: small; font-weight: 500;"></span><br>
+                                                                                        </div>
                                                                                         <span
                                                                                             class="wpcf7-form-control-wrap"
                                                                                             data-name="acceptance-788"><span
@@ -5143,10 +5148,10 @@
 
         setInterval(function () {
             clear();
+            if (document.getElementById("capchange").innerHTML != "") {
+                document.getElementById("capchange").innerHTML = "";
+            }
         }, 1);
-
-        document.addEventListener("change", clear());
-        document.addEventListener("load", clear());
 
     </script>
 </body>
