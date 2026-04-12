@@ -34,7 +34,7 @@ app.post("/api/bestellungen", async (req, res) => {
     gesamtkosten, rechnung_verschickt, bezahlt_am, erledigt
   } = req.body;
 
-  if (!name || !klasse || !e_mail || !telefonnummer || !adresse || !artikel_1) {
+  if (!name || !klasse || !e_mail || !telefonnummer || !adresse) {
     return res.status(400).json({ error: "Fehlende Felder: Kontakdaten und/oder Artikel 1" });
   }
 

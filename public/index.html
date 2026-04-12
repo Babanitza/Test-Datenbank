@@ -597,6 +597,34 @@
             } else if (document.getElementById("email").value != "") {
                 document.getElementsByClassName("check_formular_filled")[3].innerHTML = "";
             }
+
+            if (document.getElementById("telefon").getAttribute("aria-invalid") === "true" && document.getElementById("telefon").value != "") {
+                document.getElementsByClassName("check_formular_filled")[2].innerHTML = "Bitte geben Sie eine gültige Telefonnummer ein (mindestens 6 Ziffern).";
+            } else if (document.getElementById("telefon").value != "") {
+                document.getElementsByClassName("check_formular_filled")[2].innerHTML = "";
+            }
+
+            if (document.getElementById("product-1").value == "Turnbeutel" && document.getElementById("logo-text-1").value != "") {
+                document.getElementById("vorne_1").selected = true;
+                calculateTotalCost();
+            } else if (document.getElementById("product-1").value == "Turnbeutel" && document.getElementById("logo-text-1").value == "") {
+                document.getElementById("vorne_1").selected = false;
+                calculateTotalCost();
+            }
+            if (document.getElementById("product-2").value == "Turnbeutel" && document.getElementById("logo-text-2").value != "") {
+                document.getElementById("vorne_2").selected = true;
+                calculateTotalCost();
+            } else if (document.getElementById("product-2").value == "Turnbeutel" && document.getElementById("logo-text-2").value == "") {
+                document.getElementById("vorne_2").selected = false;
+                calculateTotalCost();
+            }
+            if (document.getElementById("product-3").value == "Turnbeutel" && document.getElementById("logo-text-3").value != "") {
+                document.getElementById("vorne_3").selected = true;
+                calculateTotalCost();
+            } else if (document.getElementById("product-3").value == "Turnbeutel" && document.getElementById("logo-text-3").value == "") {
+                document.getElementById("vorne_3").selected = false;
+                calculateTotalCost();
+            }
         });
 
         document.addEventListener('DOMContentLoaded', function () {
@@ -611,11 +639,11 @@
 
             var last_colors_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
             var last_colors_2 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
-            var last_colors_3 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
+            var last_colors_3 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Mütze": "", "Cap": "" };
 
             var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
             var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
-            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
+            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Mütze": "", "Cap": "" };
 
 
 
@@ -657,7 +685,11 @@
             var count_miss_3 = false;
             var size_miss_3 = false;
             var all_miss_3 = false;
+            var formular_miss = false;
+            var invalid = false;
             var every_miss = false;
+            var captcha_miss = false;
+            var datenschutz_miss = false;
 
             var block = false;
 
@@ -676,7 +708,7 @@
                     size_miss_1 = false;
                 }
                 //Platzierung
-                if (document.getElementById(`product-1`).value != "" && document.getElementsByName(`logo-1`)[0].value != "" && document.getElementById(`logo-text-1`).value == "") {
+                if (document.getElementById(`product-1`).value != "Turnbeutel" && document.getElementById(`product-1`).value != "" && document.getElementsByName(`logo-1`)[0].value != "" && document.getElementById(`logo-text-1`).value == "") {
                     place_miss_1 = true;
                     document.getElementById("ort_1").innerHTML = "Platzierung der\nBeschriftung (*)"
                 } else {
@@ -710,7 +742,7 @@
                     size_miss_2 = false;
                 }
                 //Platzierung
-                if (document.getElementById(`product-2`).value != "" && document.getElementsByName(`logo-2`)[0].value != "" && document.getElementById(`logo-text-2`).value == "") {
+                if (document.getElementById(`product-2`).value != "Turnbeutel" && document.getElementById(`product-2`).value != "" && document.getElementsByName(`logo-2`)[0].value != "" && document.getElementById(`logo-text-2`).value == "") {
                     place_miss_2 = true;
                 } else {
                     place_miss_2 = false;
@@ -742,7 +774,7 @@
                     size_miss_3 = false;
                 }
                 //Platzierung
-                if (document.getElementById(`product-3`).value != "" && document.getElementsByName(`logo-3`)[0].value != "" && document.getElementById(`logo-text-3`).value == "") {
+                if (document.getElementById(`product-3`).value != "Turnbeutel" && document.getElementById(`product-3`).value != "" && document.getElementsByName(`logo-3`)[0].value != "" && document.getElementById(`logo-text-3`).value == "") {
                     place_miss_3 = true;
                 } else {
                     place_miss_3 = false;
@@ -784,13 +816,37 @@
                     all_miss_3 = true;
                 }
 
-                if (document.getElementById(`product-1`).value == "" && document.getElementById(`color-1`).value == "" && document.getElementById(`size-1`).value == "" && ((document.getElementsByName(`logo-1`)[0].value == "" && document.getElementById(`logo-text-1`).value != "") || (document.getElementsByName(`logo-1`)[0].value != "" && document.getElementById(`logo-text-1`).value == "")) == false && document.getElementById(`product-2`).value == "" && document.getElementById(`color-2`).value == "" && document.getElementById(`size-2`).value == "" && ((document.getElementsByName(`logo-2`)[0].value == "" && document.getElementById(`logo-text-2`).value != "") || (document.getElementsByName(`logo-2`)[0].value != "" && document.getElementById(`logo-text-2`).value == "")) == false && document.getElementById(`product-3`).value == "" && document.getElementById(`color-3`).value == "" && document.getElementById(`size-3`).value == "" && ((document.getElementsByName(`logo-3`)[0].value == "" && document.getElementById(`logo-text-3`).value != "") || (document.getElementsByName(`logo-3`)[0].value != "" && document.getElementById(`logo-text-3`).value == "")) == false) {
+                if (document.getElementById("name").value == "" || document.getElementById("adress").value == "" || document.getElementById("telefon").value == "" || document.getElementById("email").value == "" || document.getElementById("klasse").value == "") {
+                    formular_miss = true;
+                } else {
+                    formular_miss = false;
+                }
+
+                if (document.getElementById(`product-1`).value == "" && document.getElementById(`color-1`).value == "" && document.getElementById(`size-1`).value == "" && ((document.getElementsByName(`logo-1`)[0].value == "" && document.getElementById(`logo-text-1`).value != "") || (document.getElementsByName(`logo-1`)[0].value != "" && document.getElementById(`logo-text-1`).value == "")) == false && document.getElementById(`product-2`).value == "" && document.getElementById(`color-2`).value == "" && document.getElementById(`size-2`).value == "" && ((document.getElementsByName(`logo-2`)[0].value == "" && document.getElementById(`logo-text-2`).value != "") || (document.getElementsByName(`logo-2`)[0].value != "" && document.getElementById(`logo-text-2`).value == "")) == false && document.getElementById(`product-3`).value == "" && document.getElementById(`color-3`).value == "" && document.getElementById(`size-3`).value == "" && ((document.getElementsByName(`logo-3`)[0].value == "" && document.getElementById(`logo-text-3`).value != "") || (document.getElementsByName(`logo-3`)[0].value != "" && document.getElementById(`logo-text-3`).value == "")) == false && document.getElementById("name").value == "" && document.getElementById("adress").value == "" && document.getElementById("telefon").value == "" && document.getElementById("email").value == "" && document.getElementById("klasse").value == "") {
                     every_miss = true;
                 } else {
                     every_miss = false;
                 }
 
-                if (count_miss_1 == false && count_miss_2 == false && count_miss_3 == false && color_miss_1 == false && color_miss_2 == false && color_miss_3 == false && size_miss_1 == false && size_miss_2 == false && size_miss_3 == false && logo_miss_1 == false && logo_miss_2 == false && logo_miss_3 == false && place_miss_1 == false && place_miss_2 == false && place_miss_3 == false && all_miss_1 == false && all_miss_2 == false && all_miss_3 == false && every_miss == false) {
+                if ((document.getElementById("email").getAttribute("aria-invalid") === "true" && document.getElementById("email").value != "") || (document.getElementById("telefon").getAttribute("aria-invalid") === "true" && document.getElementById("telefon").value != "")) {
+                    invalid = true;
+                } else {
+                    invalid = false;
+                }
+
+                if (document.getElementsByName("captcha-2")[0].value == "") {
+                    captcha_miss = true;
+                } else {
+                    captcha_miss = false;
+                }
+
+                if (document.getElementById("check_datenschutz").checked == false) {
+                    datenschutz_miss = true;
+                } else {
+                    datenschutz_miss = false;
+                }
+
+                if (count_miss_1 == false && count_miss_2 == false && count_miss_3 == false && color_miss_1 == false && color_miss_2 == false && color_miss_3 == false && size_miss_1 == false && size_miss_2 == false && size_miss_3 == false && logo_miss_1 == false && logo_miss_2 == false && logo_miss_3 == false && place_miss_1 == false && place_miss_2 == false && place_miss_3 == false && all_miss_1 == false && all_miss_2 == false && all_miss_3 == false && formular_miss == false && every_miss == false && invalid == false && captcha_miss == false && datenschutz_miss == false) {
                     console.log("Able!");
                     block = false;
                 } else {
@@ -1211,6 +1267,7 @@
                 'T-Shirt': 20.50,
                 'Turnbeutel': 11,
                 'Rucksack': 24,
+                'Rcuksack': 24,
                 'Mütze': 11,
                 'Cap': 11
             };
@@ -1232,6 +1289,11 @@
                 document.querySelector('[name="logo-1"]'),
                 document.querySelector('[name="logo-2"]'),
                 document.querySelector('[name="logo-3"]')
+            ];
+            var logo_textFields = [
+                document.querySelector('[name="logo-text-1"]'),
+                document.querySelector('[name="logo-text-2"]'),
+                document.querySelector('[name="logo-text-3"]')
             ];
             var sizeFields = [
                 document.getElementById('size-1'),
@@ -1583,7 +1645,7 @@
                 'Polo Shirt': ['Burgundy', 'Sapphire Blue', 'Deep Black', 'EarthyGreen', 'Oxford Navy', 'Ink Blue', 'Heather Grey'],
                 'T-Shirt': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'Ink Blue', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', "Earthy Green"],
                 'Turnbeutel': ['Burgundy', 'Emerald', 'French Navy', 'Fuchsia', 'Kelly Green', 'Purple', 'Surf Blue', 'Black'],
-                'Rucksack': ['Burgundy', 'French Navy', 'Fuchsia / Graphit Grey', 'Kelly Green', 'Purple', 'Surf Blue / Graphit Grey', 'Black'],
+                'Rucksack': ['Burgundy', 'French Navy', 'Fuchsia und Graphit Grey', 'Kelly Green', 'Purple', 'Surf Blue und Graphit Grey', 'Black'],
                 'Mütze': ['Burgundy', 'French Navy', 'Black', 'Dusty Pink', 'Graphit Grey', 'Heather Grey'],
                 'Cap': ['Burgundy', 'Emerald', 'French Navy', 'Fuchsia', 'Kelly Green', 'Purple', 'Surf Blue', 'Black']
             };
@@ -1707,7 +1769,6 @@
                 var selectedProduct = document.getElementsByName("product-1")[0].value;
 
                 if (selectedProduct == "Turnbeutel") {
-                    document.getElementsByName("logo-1")[0].value = "";
                     document.getElementsByName("logo-1")[0].disabled = true;
                     document.getElementsByName("logo-text-1")[0].disabled = false;
                 } else if (valid_products_for_logos.includes(selectedProduct) == false) {
@@ -1723,7 +1784,6 @@
                 var selectedProduct = document.getElementsByName("product-2")[0].value;
 
                 if (selectedProduct == "Turnbeutel") {
-                    document.getElementsByName("logo-2")[0].value = "";
                     document.getElementsByName("logo-2")[0].disabled = true;
                     document.getElementsByName("logo-text-2")[0].disabled = false;
                 } else if (valid_products_for_logos.includes(selectedProduct) == false) {
@@ -1739,7 +1799,6 @@
                 var selectedProduct = document.getElementsByName("product-3")[0].value;
 
                 if (selectedProduct == "Turnbeutel") {
-                    document.getElementsByName("logo-3")[0].value = "";
                     document.getElementsByName("logo-3")[0].disabled = true;
                     document.getElementsByName("logo-text-3")[0].disabled = false;
                 } else if (valid_products_for_logos.includes(selectedProduct) == false) {
@@ -1766,23 +1825,20 @@
             }
 
             function disable_turnbeutel() {
-                if (document.getElementsByName("product-1")[0].value == "Turnbeutel" || document.getElementsByName("product-1")[0].value == "Rucksack" || document.getElementsByName("product-1")[0].value == "Mütze" || document.getElementsByName("product-1")[0].value == "Cap") {
-                    document.getElementsByName("logo-1")[0].value = "";
+                if (document.getElementsByName("product-1")[0].value == "Turnbeutel" || document.getElementsByName("product-1")[0].value == "Rucksack" || document.getElementsByName("product-1")[0].value == "Rcuksack" || document.getElementsByName("product-1")[0].value == "Mütze" || document.getElementsByName("product-1")[0].value == "Cap") {
                     document.getElementsByName("logo-1")[0].disabled = true;
                 } else {
                     document.getElementsByName("logo-1")[0].disabled = false;
                     document.getElementsByName("logo-text-1")[0].disabled = false;
                 }
-                if (document.getElementsByName("product-2")[0].value == "Turnbeutel" || document.getElementsByName("product-2")[0].value == "Rucksack" || document.getElementsByName("product-2")[0].value == "Mütze" || document.getElementsByName("product-2")[0].value == "Cap") {
+                if (document.getElementsByName("product-2")[0].value == "Turnbeutel" || document.getElementsByName("product-2")[0].value == "Rucksack" || document.getElementsByName("product-2")[0].value == "Rcuksack" || document.getElementsByName("product-2")[0].value == "Mütze" || document.getElementsByName("product-2")[0].value == "Cap") {
                     document.getElementsByName("logo-2")[0].disabled = true;
-                    document.getElementsByName("logo-2")[0].value = "";
                 } else {
                     document.getElementsByName("logo-2")[0].disabled = false;
                     document.getElementsByName("logo-text-2")[0].disabled = false;
                 }
-                if (document.getElementsByName("product-3")[0].value == "Turnbeutel" || document.getElementsByName("product-3")[0].value == "Rucksack" || document.getElementsByName("product-3")[0].value == "Mütze" || document.getElementsByName("product-3")[0].value == "Cap") {
+                if (document.getElementsByName("product-3")[0].value == "Turnbeutel" || document.getElementsByName("product-3")[0].value == "Rucksack" || document.getElementsByName("product-3")[0].value == "Rcuksack" || document.getElementsByName("product-3")[0].value == "Mütze" || document.getElementsByName("product-3")[0].value == "Cap") {
                     document.getElementsByName("logo-3")[0].disabled = true;
-                    document.getElementsByName("logo-3")[0].value = "";
                 } else {
                     document.getElementsByName("logo-3")[0].disabled = false;
                     document.getElementsByName("logo-text-3")[0].disabled = false;
@@ -1830,8 +1886,9 @@
                 reset();
                 check_miss();
                 disable_button();
-                disable_turnbeutel();
                 disable_logo();
+                disable_turnbeutel();
+                calculateTotalCost();
             })
 
             // Attach event listeners to product dropdowns
@@ -4050,7 +4107,8 @@
                                                                                                     auswählen –
                                                                                                 </option>
                                                                                                 <option
-                                                                                                    value="Platzierung: vorn">
+                                                                                                    value="Platzierung: vorn"
+                                                                                                    id="vorne_1">
                                                                                                     Platzierung:
                                                                                                     vorn
                                                                                                 </option>
@@ -4298,7 +4356,8 @@
                                                                                                     auswählen –
                                                                                                 </option>
                                                                                                 <option
-                                                                                                    value="Platzierung: vorn">
+                                                                                                    value="Platzierung: vorn"
+                                                                                                    id="vorne_2">
                                                                                                     Platzierung:
                                                                                                     vorn
                                                                                                 </option>
@@ -4545,7 +4604,8 @@
                                                                                                     auswählen –
                                                                                                 </option>
                                                                                                 <option
-                                                                                                    value="Platzierung: vorn">
+                                                                                                    value="Platzierung: vorn"
+                                                                                                    id="vorne_3">
                                                                                                     Platzierung:
                                                                                                     vorn
                                                                                                 </option>
@@ -4728,6 +4788,45 @@
                                                                                             aria-hidden="true"
                                                                                             id="capchange"></div>
                                                                                     </form>
+                                                                                    <style>
+                                                                                        .centerdiv {
+                                                                                            text-align: center;
+                                                                                            align-items: center;
+                                                                                        }
+                                                                                    </style>
+                                                                                    <div class="centerdiv">
+                                                                                        <div class="wpcf7-response-output"
+                                                                                            aria-hidden="true">
+                                                                                        </div>
+                                                                                        <br><br>
+                                                                                        <span
+                                                                                            style="font-size: 120%; font: bolder;"
+                                                                                            id="fill_require"></span>
+                                                                                        <br><br>
+                                                                                        <span
+                                                                                            style="font-size: 100%;">Nach
+                                                                                            Abschluss Ihrer Bestellung
+                                                                                            erhalten Sie innerhalb
+                                                                                            weniger Minuten eine
+                                                                                            Bestellbestätigung an die
+                                                                                            angegebene E-Mail Adresse.
+                                                                                            Falls Sie keine E-Mail
+                                                                                            erhalten sollten, wenden Sie
+                                                                                            sich bitte an unser
+                                                                                            Schulkleidungsteam
+                                                                                            (schulkleidung@isarnwohld.org).</span>
+                                                                                        <br><br>
+                                                                                        <span
+                                                                                            style="font-size: 100%;">Die
+                                                                                            Rechnung erhalten Sie per
+                                                                                            E-Mail am Ende der
+                                                                                            Bestellphase
+                                                                                            (19.06.2026).</span>
+                                                                                        <span
+                                                                                            id="Bestellbestätigung"></span>
+                                                                                        <br>
+                                                                                        <span id="Rechnung"></span>
+                                                                                    </div>
                                                                                 </div>
 
                                                                             </div>
@@ -5112,7 +5211,7 @@
             const bezahlt_am = "";
             const erledigt = "Nein";
 
-            if (!name || !klasse || !e_mail || !telefonnummer || !adresse || !artikel_1) {
+            if (!name || !klasse || !e_mail || !telefonnummer || !adresse) {
             } else {
 
                 try {
@@ -5151,6 +5250,287 @@
             if (document.getElementById("capchange").innerHTML != "") {
                 document.getElementById("capchange").innerHTML = "";
             }
+            var products = {
+                'Zip-Hoodie': 37,
+                'Hoodie': 32,
+                'Sweater': 29,
+                'Polo Shirt': 26,
+                'T-Shirt': 20.50,
+                'Turnbeutel': 11,
+                'Rucksack': 24,
+                'Mütze': 11,
+                'Cap': 11
+            };
+
+            var logoCost = 4;
+            var size3XLCost = 4;
+
+            var productFields = [
+                document.getElementById('product-1'),
+                document.getElementById('product-2'),
+                document.getElementById('product-3')
+            ];
+            var countFields = [
+                document.getElementById('count-1'),
+                document.getElementById('count-2'),
+                document.getElementById('count-3')
+            ];
+            var logoFields = [
+                document.querySelector('[name="logo-1"]'),
+                document.querySelector('[name="logo-2"]'),
+                document.querySelector('[name="logo-3"]')
+            ];
+            var logo_textFields = [
+                document.querySelector('[name="logo-text-1"]'),
+                document.querySelector('[name="logo-text-2"]'),
+                document.querySelector('[name="logo-text-3"]')
+            ];
+            var sizeFields = [
+                document.getElementById('size-1'),
+                document.getElementById('size-2'),
+                document.getElementById('size-3')
+            ];
+            var colorFields = [
+                document.getElementById('color-1'),
+                document.getElementById('color-2'),
+                document.getElementById('color-3')
+            ];
+            var totalCost = document.getElementById('total-cost');
+
+            function calculateTotalCost() {
+                var total = 0;
+
+                for (var i = 0; i < productFields.length; i++) {
+                    var product = productFields[i].value;
+                    var count = Number(countFields[i].value);
+                    var logo = logoFields[i].value;
+                    var size = sizeFields[i].value;
+                    var color = colorFields[i].value;
+
+                    if (product && products[product]) {
+                        total += products[product] * count;
+
+                        // Add logo cost if logo is selected
+                        if (logo !== "") {
+                            total += logoCost * count;
+                        }
+
+                        // Add extra cost for 3XL size if product is Zip-Hoodie, Hoodie, Sweater or T-Shirt
+                        if (size === "3XL" && ["Hoodie", "Polo Shirt", "T-Shirt"].includes(product)) {o0pß6
+                            total += size3XLCost * count;
+                        } else if (size === "3XL" && product === "Sweater" && ["Burgundy", "Deep Black", "Sapphire Blue", "Heather Grey"].includes(color)) {
+                            total += size3XLCost * count;
+                        } else if (size === "3XL" && product === "Zip-Hoodie" && ["Deep Black", "Heather Grey"].includes(color)) {
+                            total += size3XLCost * count;
+                        }
+                    }
+                }
+
+                totalCost.value = total.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '€';
+            }
+            calculateTotalCost();
+
+            var product_miss_1 = false;
+            var color_miss_1 = false;
+            var place_miss_1 = false;
+            var logo_miss_1 = false;
+            var count_miss_1 = false;
+            var size_miss_1 = false;
+            var all_miss_1 = false;
+            var product_miss_2 = false;
+            var color_miss_2 = false;
+            var place_miss_2 = false;
+            var logo_miss_2 = false;
+            var count_miss_2 = false;
+            var size_miss_2 = false;
+            var all_miss_2 = false;
+            var product_miss_3 = false;
+            var color_miss_3 = false;
+            var place_miss_3 = false;
+            var logo_miss_3 = false;
+            var count_miss_3 = false;
+            var size_miss_3 = false;
+            var all_miss_3 = false;
+            var formular_miss = false;
+            var invalid = false;
+            var every_miss = false;
+            var captcha_miss = false;
+            var datenschutz_miss = false;
+
+            var block = false;
+
+            function check_miss() {
+
+                //Farbe
+                if (document.getElementById(`product-1`).value != "" && document.getElementById(`color-1`).value == "") {
+                    color_miss_1 = true;
+                } else {
+                    color_miss_1 = false;
+                }
+                //Größe
+                if (document.getElementById(`product-1`).value != "" && document.getElementById(`size-1`).value == "") {
+                    size_miss_1 = true;
+                } else {
+                    size_miss_1 = false;
+                }
+                //Platzierung
+                if (document.getElementById(`product-1`).value != "Turnbeutel" && document.getElementById(`product-1`).value != "" && document.getElementsByName(`logo-1`)[0].value != "" && document.getElementById(`logo-text-1`).value == "") {
+                    place_miss_1 = true;
+                    document.getElementById("ort_1").innerHTML = "Platzierung der\nBeschriftung (*)"
+                } else {
+                    place_miss_1 = false;
+                    document.getElementById("ort_1").innerHTML = "Platzierung der\nBeschriftung"
+                }
+                //Logo
+                if (document.getElementById(`product-1`).value != "" && document.getElementById(`logo-text-1`).value != "" && document.getElementsByName(`logo-1`)[0].value == "") {
+                    logo_miss_1 = true;
+                } else {
+                    logo_miss_1 = false;
+                }
+                //Anzahl
+                if (document.getElementById(`product-1`).value != "" && document.getElementById(`count-1`).value == "0") {
+                    count_miss_1 = true;
+                } else {
+                    count_miss_1 = false;
+                }
+
+
+                //Farbe
+                if (document.getElementById(`product-2`).value != "" && document.getElementById(`color-2`).value == "") {
+                    color_miss_2 = true;
+                } else {
+                    color_miss_2 = false;
+                }
+                //Größe
+                if (document.getElementById(`product-2`).value != "" && document.getElementById(`size-2`).value == "") {
+                    size_miss_2 = true;
+                } else {
+                    size_miss_2 = false;
+                }
+                //Platzierung
+                if (document.getElementById(`product-2`).value != "Turnbeutel" && document.getElementById(`product-2`).value != "" && document.getElementsByName(`logo-2`)[0].value != "" && document.getElementById(`logo-text-2`).value == "") {
+                    place_miss_2 = true;
+                } else {
+                    place_miss_2 = false;
+                }
+                //Logo
+                if (document.getElementById(`product-2`).value != "" && document.getElementById(`logo-text-2`).value != "" && document.getElementsByName(`logo-2`)[0].value == "") {
+                    logo_miss_2 = true;
+                } else {
+                    logo_miss_2 = false;
+                }
+                //Anzahl
+                if (document.getElementById(`product-2`).value != "" && document.getElementById(`count-2`).value == "0") {
+                    count_miss_2 = true;
+                } else {
+                    count_miss_2 = false;
+                }
+
+
+                //Farbe
+                if (document.getElementById(`product-3`).value != "" && document.getElementById(`color-3`).value == "") {
+                    color_miss_3 = true;
+                } else {
+                    color_miss_3 = false;
+                }
+                //Größe
+                if (document.getElementById(`product-3`).value != "" && document.getElementById(`size-3`).value == "") {
+                    size_miss_3 = true;
+                } else {
+                    size_miss_3 = false;
+                }
+                //Platzierung
+                if (document.getElementById(`product-3`).value != "Turnbeutel" && document.getElementById(`product-3`).value != "" && document.getElementsByName(`logo-3`)[0].value != "" && document.getElementById(`logo-text-3`).value == "") {
+                    place_miss_3 = true;
+                } else {
+                    place_miss_3 = false;
+                }
+                //Logo
+                if (document.getElementById(`product-3`).value != "" && document.getElementById(`logo-text-3`).value != "" && document.getElementsByName(`logo-3`)[0].value == "") {
+                    logo_miss_3 = true;
+                } else {
+                    logo_miss_3 = false;
+                }
+                //Anzahl
+                if (document.getElementById(`product-3`).value != "" && document.getElementById(`count-3`).value == "0") {
+                    count_miss_3 = true;
+                } else {
+                    count_miss_3 = false;
+                }
+
+                if (document.getElementById(`product-1`).value != "" && document.getElementById(`color-1`).value != "" && document.getElementById(`size-1`).value != "" && ((document.getElementsByName(`logo-1`)[0].value != "" && document.getElementById(`logo-text-1`).value == "") || (document.getElementsByName(`logo-1`)[0].value == "" && document.getElementById(`logo-text-1`).value != "") == false)) {
+                    all_miss_1 = false;
+                } else if (document.getElementById(`product-1`).value == "" && document.getElementById(`color-1`).value == "" && document.getElementById(`size-1`).value == "" && ((document.getElementsByName(`logo-1`)[0].value == "" && document.getElementById(`logo-text-1`).value != "") || (document.getElementsByName(`logo-1`)[0].value != "" && document.getElementById(`logo-text-1`).value == "")) == false) {
+                    all_miss_1 = false;
+                } else {
+                    all_miss_1 = true;
+                }
+
+                if (document.getElementById(`product-2`).value != "" && document.getElementById(`color-2`).value != "" && document.getElementById(`size-2`).value != "" && (document.getElementsByName(`logo-2`)[0].value != "" && document.getElementById(`logo-text-2`).value == "") || (document.getElementsByName(`logo-2`)[0].value == "" && document.getElementById(`logo-text-2`).value != "") == false) {
+                    all_miss_2 = false;
+                } else if (document.getElementById(`product-2`).value == "" && document.getElementById(`color-2`).value == "" && document.getElementById(`size-2`).value == "" && ((document.getElementsByName(`logo-2`)[0].value == "" && document.getElementById(`logo-text-2`).value != "") || (document.getElementsByName(`logo-2`)[0].value != "" && document.getElementById(`logo-text-2`).value == "")) == false) {
+                    all_miss_2 = false;
+                } else {
+                    all_miss_2 = true;
+                }
+
+                if (document.getElementById(`product-3`).value != "" && document.getElementById(`color-3`).value != "" && document.getElementById(`size-3`).value != "" && ((document.getElementsByName(`logo-3`)[0].value != "" && document.getElementById(`logo-text-3`).value == "") || (document.getElementsByName(`logo-3`)[0].value == "" && document.getElementById(`logo-text-3`).value != "") == false)) {
+                    all_miss_3 = false;
+                } else if (document.getElementById(`product-3`).value == "" && document.getElementById(`color-3`).value == "" && document.getElementById(`size-3`).value == "" && ((document.getElementsByName(`logo-3`)[0].value == "" && document.getElementById(`logo-text-3`).value != "") || (document.getElementsByName(`logo-3`)[0].value != "" && document.getElementById(`logo-text-3`).value == "")) == false) {
+                    all_miss_3 = false;
+                } else {
+                    all_miss_3 = true;
+                }
+
+                if (document.getElementById("name").value == "" || document.getElementById("adress").value == "" || document.getElementById("telefon").value == "" || document.getElementById("email").value == "" || document.getElementById("klasse").value == "") {
+                    formular_miss = true;
+                } else {
+                    formular_miss = false;
+                }
+
+                if (document.getElementById(`product-1`).value == "" && document.getElementById(`color-1`).value == "" && document.getElementById(`size-1`).value == "" && ((document.getElementsByName(`logo-1`)[0].value == "" && document.getElementById(`logo-text-1`).value != "") || (document.getElementsByName(`logo-1`)[0].value != "" && document.getElementById(`logo-text-1`).value == "")) == false && document.getElementById(`product-2`).value == "" && document.getElementById(`color-2`).value == "" && document.getElementById(`size-2`).value == "" && ((document.getElementsByName(`logo-2`)[0].value == "" && document.getElementById(`logo-text-2`).value != "") || (document.getElementsByName(`logo-2`)[0].value != "" && document.getElementById(`logo-text-2`).value == "")) == false && document.getElementById(`product-3`).value == "" && document.getElementById(`color-3`).value == "" && document.getElementById(`size-3`).value == "" && ((document.getElementsByName(`logo-3`)[0].value == "" && document.getElementById(`logo-text-3`).value != "") || (document.getElementsByName(`logo-3`)[0].value != "" && document.getElementById(`logo-text-3`).value == "")) == false && document.getElementById("name").value == "" && document.getElementById("adress").value == "" && document.getElementById("telefon").value == "" && document.getElementById("email").value == "" && document.getElementById("klasse").value == "") {
+                    every_miss = true;
+                } else {
+                    every_miss = false;
+                }
+
+                if ((document.getElementById("email").getAttribute("aria-invalid") === "true" && document.getElementById("email").value != "") || (document.getElementById("telefon").getAttribute("aria-invalid") === "true" && document.getElementById("telefon").value != "")) {
+                    invalid = true;
+                } else {
+                    invalid = false;
+                }
+
+                if (document.getElementsByName("captcha-2")[0].value == "") {
+                    captcha_miss = true;
+                } else {
+                    captcha_miss = false;
+                }
+
+                if (document.getElementById("check_datenschutz").checked == false) {
+                    datenschutz_miss = true;
+                } else {
+                    datenschutz_miss = false;
+                }
+
+                if (count_miss_1 == false && count_miss_2 == false && count_miss_3 == false && color_miss_1 == false && color_miss_2 == false && color_miss_3 == false && size_miss_1 == false && size_miss_2 == false && size_miss_3 == false && logo_miss_1 == false && logo_miss_2 == false && logo_miss_3 == false && place_miss_1 == false && place_miss_2 == false && place_miss_3 == false && all_miss_1 == false && all_miss_2 == false && all_miss_3 == false && formular_miss == false && every_miss == false && invalid == false && captcha_miss == false && datenschutz_miss == false) {
+                    block = false;
+                } else {
+                    block = true;
+                }
+
+                //alert("disable!")
+                return block;
+            }
+
+            disable_button_order = check_miss();
+            if (disable_button_order) {
+                document.getElementById("order_button_submit").disabled = true;
+                document.getElementById("fill_require").innerHTML = "Bitte füllen Sie alle Pflichtfelder bei den gewünschten Artikeln aus (*) "
+            } else {
+                document.getElementById("order_button_submit").disabled = false;
+            }
+
+
         }, 1);
 
     </script>
