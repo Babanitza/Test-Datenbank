@@ -637,13 +637,13 @@
             var last_sizes_2 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "" };
             var last_sizes_3 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "" };
 
-            var last_colors_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
-            var last_colors_2 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
-            var last_colors_3 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Mütze": "", "Cap": "" };
+            var last_colors_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
+            var last_colors_2 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
+            var last_colors_3 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Muetze": "", "Cap": "" };
 
-            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
-            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Mütze": "", "Cap": "" };
-            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Mütze": "", "Cap": "" };
+            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
+            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
+            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Muetze": "", "Cap": "" };
 
 
 
@@ -1264,11 +1264,11 @@
                 'Hoodie': 32,
                 'Sweater': 29,
                 'Polo Shirt': 26,
-                'T-Shirt': 20.50,
+                'T-Shirt': 21,
                 'Turnbeutel': 11,
                 'Rucksack': 24,
                 'Rcuksack': 24,
-                'Mütze': 11,
+                'Muetze': 11,
                 'Cap': 11
             };
 
@@ -1646,7 +1646,7 @@
                 'T-Shirt': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'Ink Blue', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', "Earthy Green"],
                 'Turnbeutel': ['Burgundy', 'Emerald', 'French Navy', 'Fuchsia', 'Kelly Green', 'Purple', 'Surf Blue', 'Black'],
                 'Rucksack': ['Burgundy', 'French Navy', 'Fuchsia und Graphit Grey', 'Kelly Green', 'Purple', 'Surf Blue und Graphit Grey', 'Black'],
-                'Mütze': ['Burgundy', 'French Navy', 'Black', 'Dusty Pink', 'Graphit Grey', 'Heather Grey'],
+                'Muetze': ['Burgundy', 'French Navy', 'Black', 'Dusty Pink', 'Graphit Grey', 'Heather Grey'],
                 'Cap': ['Burgundy', 'Emerald', 'French Navy', 'Fuchsia', 'Kelly Green', 'Purple', 'Surf Blue', 'Black']
             };
 
@@ -1825,19 +1825,19 @@
             }
 
             function disable_turnbeutel() {
-                if (document.getElementsByName("product-1")[0].value == "Turnbeutel" || document.getElementsByName("product-1")[0].value == "Rucksack" || document.getElementsByName("product-1")[0].value == "Rcuksack" || document.getElementsByName("product-1")[0].value == "Mütze" || document.getElementsByName("product-1")[0].value == "Cap") {
+                if (document.getElementsByName("product-1")[0].value == "Turnbeutel" || document.getElementsByName("product-1")[0].value == "Rucksack" || document.getElementsByName("product-1")[0].value == "Rcuksack" || document.getElementsByName("product-1")[0].value == "Muetze" || document.getElementsByName("product-1")[0].value == "Cap") {
                     document.getElementsByName("logo-1")[0].disabled = true;
                 } else {
                     document.getElementsByName("logo-1")[0].disabled = false;
                     document.getElementsByName("logo-text-1")[0].disabled = false;
                 }
-                if (document.getElementsByName("product-2")[0].value == "Turnbeutel" || document.getElementsByName("product-2")[0].value == "Rucksack" || document.getElementsByName("product-2")[0].value == "Rcuksack" || document.getElementsByName("product-2")[0].value == "Mütze" || document.getElementsByName("product-2")[0].value == "Cap") {
+                if (document.getElementsByName("product-2")[0].value == "Turnbeutel" || document.getElementsByName("product-2")[0].value == "Rucksack" || document.getElementsByName("product-2")[0].value == "Rcuksack" || document.getElementsByName("product-2")[0].value == "Muetze" || document.getElementsByName("product-2")[0].value == "Cap") {
                     document.getElementsByName("logo-2")[0].disabled = true;
                 } else {
                     document.getElementsByName("logo-2")[0].disabled = false;
                     document.getElementsByName("logo-text-2")[0].disabled = false;
                 }
-                if (document.getElementsByName("product-3")[0].value == "Turnbeutel" || document.getElementsByName("product-3")[0].value == "Rucksack" || document.getElementsByName("product-3")[0].value == "Rcuksack" || document.getElementsByName("product-3")[0].value == "Mütze" || document.getElementsByName("product-3")[0].value == "Cap") {
+                if (document.getElementsByName("product-3")[0].value == "Turnbeutel" || document.getElementsByName("product-3")[0].value == "Rucksack" || document.getElementsByName("product-3")[0].value == "Rcuksack" || document.getElementsByName("product-3")[0].value == "Muetze" || document.getElementsByName("product-3")[0].value == "Cap") {
                     document.getElementsByName("logo-3")[0].disabled = true;
                 } else {
                     document.getElementsByName("logo-3")[0].disabled = false;
@@ -3918,8 +3918,8 @@
                                                                                                     value="Rucksack">
                                                                                                     Rucksack
                                                                                                 </option>
-                                                                                                <option value="Mütze">
-                                                                                                    Mütze
+                                                                                                <option value="Muetze">
+                                                                                                    Muetze
                                                                                                 </option>
                                                                                                 <option value="Cap">
                                                                                                     Cap</option>
@@ -4168,8 +4168,8 @@
                                                                                                     value="Rucksack">
                                                                                                     Rucksack
                                                                                                 </option>
-                                                                                                <option value="Mütze">
-                                                                                                    Mütze
+                                                                                                <option value="Muetze">
+                                                                                                    Muetze
                                                                                                 </option>
                                                                                                 <option value="Cap">
                                                                                                     Cap</option>
@@ -4416,8 +4416,8 @@
                                                                                                     value="Rucksack">
                                                                                                     Rucksack
                                                                                                 </option>
-                                                                                                <option value="Mütze">
-                                                                                                    Mütze
+                                                                                                <option value="Muetze">
+                                                                                                    Muetze
                                                                                                 </option>
                                                                                                 <option value="Cap">
                                                                                                     Cap</option>
@@ -5063,9 +5063,9 @@
     </div>
     <script>
         preise = {
-            "T-Shirt": 20.5,
+            "T-Shirt": 21,
             "Hoodie": 32,
-            "Mütze": 11,
+            "Muetze": 11,
             "Cap": 11,
             "Zip-Hoodie": 37,
             "Sweater": 29,
@@ -5255,10 +5255,10 @@
                 'Hoodie': 32,
                 'Sweater': 29,
                 'Polo Shirt': 26,
-                'T-Shirt': 20.50,
+                'T-Shirt': 21,
                 'Turnbeutel': 11,
                 'Rucksack': 24,
-                'Mütze': 11,
+                'Muetze': 11,
                 'Cap': 11
             };
 
