@@ -629,21 +629,21 @@
 
         document.addEventListener('DOMContentLoaded', function () {
 
-            var last_logos_1 = { "": ["", ""], "Zip-Hoodie": ["", ""], "Hoodie": ["", ""], "Sweater": ["", ""], "T-Shirt": ["", ""], "Polo Shirt": ["", ""], "Turnbeutel": ["", ""] };
-            var last_logos_2 = { "": ["", ""], "Zip-Hoodie": ["", ""], "Hoodie": ["", ""], "Sweater": ["", ""], "T-Shirt": ["", ""], "Polo Shirt": ["", ""], "Turnbeutel": ["", ""] };
-            var last_logos_3 = { "": ["", ""], "Zip-Hoodie": ["", ""], "Hoodie": ["", ""], "Sweater": ["", ""], "T-Shirt": ["", ""], "Polo Shirt": ["", ""], "Turnbeutel": ["", ""] };
+            var last_logos_1 = { "": ["", ""], "Zip-Hoodie": ["", ""], "Hoodie": ["", ""], "Sweater": ["", ""], "T-Shirt": ["", ""], "Polo-Shirt": ["", ""], "Turnbeutel": ["", ""] };
+            var last_logos_2 = { "": ["", ""], "Zip-Hoodie": ["", ""], "Hoodie": ["", ""], "Sweater": ["", ""], "T-Shirt": ["", ""], "Polo-Shirt": ["", ""], "Turnbeutel": ["", ""] };
+            var last_logos_3 = { "": ["", ""], "Zip-Hoodie": ["", ""], "Hoodie": ["", ""], "Sweater": ["", ""], "T-Shirt": ["", ""], "Polo-Shirt": ["", ""], "Turnbeutel": ["", ""] };
 
-            var last_sizes_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "" };
-            var last_sizes_2 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "" };
-            var last_sizes_3 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "" };
+            var last_sizes_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo-Shirt": "" };
+            var last_sizes_2 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo-Shirt": "" };
+            var last_sizes_3 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo-Shirt": "" };
 
-            var last_colors_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
-            var last_colors_2 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
-            var last_colors_3 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Muetze": "", "Cap": "" };
+            var last_colors_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo-Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
+            var last_colors_2 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo-Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
+            var last_colors_3 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo-Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Muetze": "", "Cap": "" };
 
-            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
-            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
-            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Muetze": "", "Cap": "" };
+            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo-Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
+            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo-Shirt": "", "Turnbeutel": "", "Rucksack": "", "Muetze": "", "Cap": "" };
+            var last_counts_1 = { "": "", "Zip-Hoodie": "", "Hoodie": "", "Sweater": "", "T-Shirt": "", "Polo-Shirt": "", "Turnbeutel": "", "Rcuksack": "", "Muetze": "", "Cap": "" };
 
 
 
@@ -1263,7 +1263,7 @@
                 'Zip-Hoodie': 37,
                 'Hoodie': 32,
                 'Sweater': 29,
-                'Polo Shirt': 26,
+                'Polo-Shirt': 26,
                 'T-Shirt': 21,
                 'Turnbeutel': 11,
                 'Rucksack': 24,
@@ -1326,7 +1326,7 @@
                         }
 
                         // Add extra cost for 3XL size if product is Zip-Hoodie, Hoodie, Sweater or T-Shirt
-                        if (size === "3XL" && ["Hoodie", "Polo Shirt", "T-Shirt"].includes(product)) {
+                        if (size === "3XL" && ["Hoodie", "Polo-Shirt", "T-Shirt"].includes(product)) {
                             total += size3XLCost * count;
                         } else if (size === "3XL" && product === "Sweater" && ["Burgundy", "Deep Black", "Sapphire Blue", "Heather Grey"].includes(color)) {
                             total += size3XLCost * count;
@@ -1535,7 +1535,7 @@
 
                 selectedProduct = document.getElementsByName("product-1")[0].value;
 
-                if (selectedProduct === "Polo Shirt") {
+                if (selectedProduct === "Polo-Shirt") {
                     while (document.getElementById("size-1").options.length > 0) {
                         document.getElementById("size-1").remove(0);
                     }
@@ -1551,7 +1551,7 @@
 
                 selectedProduct = document.getElementsByName("product-2")[0].value;
 
-                if (selectedProduct === "Polo Shirt") {
+                if (selectedProduct === "Polo-Shirt") {
                     while (document.getElementById("size-2").options.length > 0) {
                         document.getElementById("size-2").remove(0);
                     }
@@ -1566,7 +1566,7 @@
 
                 selectedProduct = document.getElementsByName("product-3")[0].value;
 
-                if (selectedProduct === "Polo Shirt") {
+                if (selectedProduct === "Polo-Shirt") {
                     while (document.getElementById("size-3").options.length > 0) {
                         document.getElementById("size-3").remove(0);
                     }
@@ -1642,7 +1642,7 @@
                 'Zip-Hoodie': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', 'Steel Grey'],
                 'Hoodie': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'EarthyGreen', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', 'Steel Grey', 'Ink Blue', "Lagoon Blue"],
                 'Sweater': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'EarthyGreen', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', 'Steel Grey', "Lagoon Blue"],
-                'Polo Shirt': ['Burgundy', 'Sapphire Blue', 'Deep Black', 'EarthyGreen', 'Oxford Navy', 'Ink Blue', 'Heather Grey'],
+                'Polo-Shirt': ['Burgundy', 'Sapphire Blue', 'Deep Black', 'EarthyGreen', 'Oxford Navy', 'Ink Blue', 'Heather Grey'],
                 'T-Shirt': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'Ink Blue', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', "Earthy Green"],
                 'Turnbeutel': ['Burgundy', 'Emerald', 'French Navy', 'Fuchsia', 'Kelly Green', 'Purple', 'Surf Blue', 'Black'],
                 'Rucksack': ['Burgundy', 'French Navy', 'Fuchsia und Graphit Grey', 'Kelly Green', 'Purple', 'Surf Blue und Graphit Grey', 'Black'],
@@ -1674,7 +1674,7 @@
             var valid_products_for_sizes = [
                 'Zip-Hoodie',
                 'Hoodie',
-                'Polo Shirt',
+                'Polo-Shirt',
                 'T-Shirt',
                 'Sweater'
             ]
@@ -1750,7 +1750,7 @@
             var valid_products_for_logos = [
                 'Zip-Hoodie',
                 'Hoodie',
-                'Polo Shirt',
+                'Polo-Shirt',
                 'T-Shirt',
                 'Sweater'
             ]
@@ -3904,8 +3904,8 @@
                                                                                                     Sweater
                                                                                                 </option>
                                                                                                 <option
-                                                                                                    value="Polo Shirt">
-                                                                                                    Polo Shirt
+                                                                                                    value="Polo-Shirt">
+                                                                                                    Polo-Shirt
                                                                                                 </option>
                                                                                                 <option value="T-Shirt">
                                                                                                     T-Shirt
@@ -4154,8 +4154,8 @@
                                                                                                     Sweater
                                                                                                 </option>
                                                                                                 <option
-                                                                                                    value="Polo Shirt">
-                                                                                                    Polo Shirt
+                                                                                                    value="Polo-Shirt">
+                                                                                                    Polo-Shirt
                                                                                                 </option>
                                                                                                 <option value="T-Shirt">
                                                                                                     T-Shirt
@@ -4402,8 +4402,8 @@
                                                                                                     Sweater
                                                                                                 </option>
                                                                                                 <option
-                                                                                                    value="Polo Shirt">
-                                                                                                    Polo Shirt
+                                                                                                    value="Polo-Shirt">
+                                                                                                    Polo-Shirt
                                                                                                 </option>
                                                                                                 <option value="T-Shirt">
                                                                                                     T-Shirt
@@ -5254,7 +5254,7 @@
                 'Zip-Hoodie': 37,
                 'Hoodie': 32,
                 'Sweater': 29,
-                'Polo Shirt': 26,
+                'Polo-Shirt': 26,
                 'T-Shirt': 21,
                 'Turnbeutel': 11,
                 'Rucksack': 24,
@@ -5316,7 +5316,7 @@
                         }
 
                         // Add extra cost for 3XL size if product is Zip-Hoodie, Hoodie, Sweater or T-Shirt
-                        if (size === "3XL" && ["Hoodie", "Polo Shirt", "T-Shirt"].includes(product)) {o0pß6
+                        if (size === "3XL" && ["Hoodie", "Polo-Shirt", "T-Shirt"].includes(product)) {o0pß6
                             total += size3XLCost * count;
                         } else if (size === "3XL" && product === "Sweater" && ["Burgundy", "Deep Black", "Sapphire Blue", "Heather Grey"].includes(color)) {
                             total += size3XLCost * count;
