@@ -577,11 +577,46 @@
     <meta name="generator" content="WordPress 6.9.4">
     <link rel="shortlink" href="https://isarnwohld-schule.de/?p=118085">
     <!-- Analytics by WP Statistics - https://wp-statistics.com -->
-     <style>
-        input{
-            size: 4 !important;
+    <style>
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
         }
-     </style>
+
+        .container,
+        .row,
+        .form-wrapper,
+        .wpcf7,
+        form {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+
+            .row,
+            .vc_row,
+            .wpb_row,
+            .grid,
+            .columns {
+                display: block !important;
+                width: 100% !important;
+            }
+
+            .column,
+            .col,
+            .vc_column_container {
+                width: 100% !important;
+                margin-left: 0 !important;
+            }
+
+        }
+    </style>
     <script>
         document.addEventListener('change', function () {
             let formular = [document.getElementById("name"), document.getElementById("adress"), document.getElementById("telefon"), document.getElementById("email"), document.getElementById("klasse")];
@@ -4085,8 +4120,7 @@
                                                                                         <span
                                                                                             class="wpcf7-form-control-wrap"
                                                                                             data-name="logo-text-1"><input
-                                                                                                size="4"
-                                                                                                max-width="4"
+                                                                                                size="4" max-width="4"
                                                                                                 maxlength="400"
                                                                                                 class="wpcf7-form-control wpcf7-text"
                                                                                                 id="logo-text-1"
@@ -4112,19 +4146,16 @@
                                                                                                     Bitte
                                                                                                     auswählen –
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="vorn"
+                                                                                                <option value="vorn"
                                                                                                     id="vorne_1">
                                                                                                     Platzierung:
                                                                                                     vorn
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="hinten">
+                                                                                                <option value="hinten">
                                                                                                     Platzierung:
                                                                                                     hinten
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="Aermel">
+                                                                                                <option value="Aermel">
                                                                                                     Platzierung:
                                                                                                     Ärmel
                                                                                                 </option>
@@ -4335,8 +4366,7 @@
                                                                                         <span
                                                                                             class="wpcf7-form-control-wrap"
                                                                                             data-name="logo-text-2"><input
-                                                                                                size="4"
-                                                                                                maxlength="400"
+                                                                                                size="4" maxlength="400"
                                                                                                 class="wpcf7-form-control wpcf7-text"
                                                                                                 id="logo-text-2"
                                                                                                 aria-invalid="false"
@@ -4361,19 +4391,16 @@
                                                                                                     Bitte
                                                                                                     auswählen –
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="vorn"
+                                                                                                <option value="vorn"
                                                                                                     id="vorne_2">
                                                                                                     Platzierung:
                                                                                                     vorn
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="hinten">
+                                                                                                <option value="hinten">
                                                                                                     Platzierung:
                                                                                                     hinten
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="Aermel">
+                                                                                                <option value="Aermel">
                                                                                                     Platzierung:
                                                                                                     Ärmel
                                                                                                 </option>
@@ -4583,8 +4610,7 @@
                                                                                         <span
                                                                                             class="wpcf7-form-control-wrap"
                                                                                             data-name="logo-text-3"><input
-                                                                                                size="4"
-                                                                                                maxlength="400"
+                                                                                                size="4" maxlength="400"
                                                                                                 class="wpcf7-form-control wpcf7-text"
                                                                                                 id="logo-text-3"
                                                                                                 aria-invalid="false"
@@ -4609,19 +4635,16 @@
                                                                                                     Bitte
                                                                                                     auswählen –
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="vorn"
+                                                                                                <option value="vorn"
                                                                                                     id="vorne_3">
                                                                                                     Platzierung:
                                                                                                     vorn
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="hinten">
+                                                                                                <option value="hinten">
                                                                                                     Platzierung:
                                                                                                     hinten
                                                                                                 </option>
-                                                                                                <option
-                                                                                                    value="Aermel">
+                                                                                                <option value="Aermel">
                                                                                                     Platzierung:
                                                                                                     Ärmel
                                                                                                 </option>
@@ -4635,8 +4658,7 @@
                                                                                         <span
                                                                                             class="wpcf7-form-control-wrap"
                                                                                             data-name="total-cost"><input
-                                                                                                size="4"
-                                                                                                maxlength="400"
+                                                                                                size="4" maxlength="400"
                                                                                                 class="wpcf7-form-control wpcf7-text"
                                                                                                 id="total-cost"
                                                                                                 readonly="readonly"
@@ -4828,10 +4850,10 @@
                                                                                             E-Mail am Ende der
                                                                                             Bestellphase
                                                                                             (19.06.2026).</span>
-                                                                                        <span
-                                                                                            id="Bestellbestätigung"></span>
-                                                                                        <br>
-                                                                                        <span id="Rechnung"></span>
+                                                                                            <span
+                                                                                                id="Bestellbestätigung"></span>
+                                                                                            <br>
+                                                                                            <span id="Rechnung"></span>
                                                                                     </div>
                                                                                 </div>
 
@@ -5322,7 +5344,8 @@
                         }
 
                         // Add extra cost for 3XL size if product is Zip-Hoodie, Hoodie, Sweater or T-Shirt
-                        if (size === "3XL" && ["Hoodie", "Polo-Shirt", "T-Shirt"].includes(product)) {o0pß6
+                        if (size === "3XL" && ["Hoodie", "Polo-Shirt", "T-Shirt"].includes(product)) {
+                            o0pß6
                             total += size3XLCost * count;
                         } else if (size === "3XL" && product === "Sweater" && ["Burgundy", "Deep Black", "Sapphire Blue", "Heather Grey"].includes(color)) {
                             total += size3XLCost * count;
