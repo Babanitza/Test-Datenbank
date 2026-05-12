@@ -1281,16 +1281,16 @@
 
             // base price per product
             var products = {
-                'Zip-Hoodie': 37,
-                'Hoodie': 32,
-                'Sweater': 29,
-                'Polo-Shirt': 26,
-                'T-Shirt': 21,
-                'Turnbeutel': 11,
-                'Rucksack': 24,
-                'Rcuksack': 24,
-                'Muetze': 11,
-                'Cap': 11
+                'Zip-Hoodie': 36,
+                'Hoodie': 31,
+                'Sweater': 28,
+                'Polo-Shirt': 26.5,
+                'T-Shirt': 19.5,
+                'Turnbeutel': 10,
+                'Rucksack': 23,
+                'Rcuksack': 23,
+                'Muetze': 10,
+                'Cap': 10
             };
 
             var logoCost = 4;
@@ -1510,47 +1510,58 @@
                 selectedProduct = document.getElementsByName("product-1")[0].value;
 
                 if (selectedProduct === "T-Shirt") {
-                    while (document.getElementById("size-1").options.length > 0) {
-                        document.getElementById("size-1").remove(0);
+                    let selectedColor = document.getElementById("color-2").value;
+                    if (selectedColor == "Blue" || selectedColor == "Burgundy" || selectedColor == "Candy Pink" || selectedColor == "Dark Khaki" || selectedColor == "Zinc (Solid)") {
+                        while (document.getElementById("size-1").options.length > 0) {
+                            document.getElementById("size-1").remove(0);
+                        }
+                        add_option("size-1", "- Bitte auswählen -", "");
+                        add_option("size-1", "S", "S");
+                        add_option("size-1", "M", "M");
+                        add_option("size-1", "L", "L");
+                        add_option("size-1", "XL", "XL");
+                        add_option("size-1", "2XL", "2XL");
+                        add_option("size-1", "3XL", "3XL");
                     }
 
-                    add_option("size-1", "- Bitte auswählen -", "");
-                    add_option("size-1", "S", "S");
-                    add_option("size-1", "M", "M");
-                    add_option("size-1", "L", "L");
-                    add_option("size-1", "XL", "XL");
-                    add_option("size-1", "2XL", "2XL");
-                    add_option("size-1", "3XL", "3XL");
                 }
 
                 selectedProduct = document.getElementsByName("product-2")[0].value;
 
                 if (selectedProduct === "T-Shirt") {
-                    while (document.getElementById("size-2").options.length > 0) {
-                        document.getElementById("size-2").remove(0);
+                    let selectedColor = document.getElementById("color-2").value;
+                    if (selectedColor == "Blue" || selectedColor == "Burgundy" || selectedColor == "Candy Pink" || selectedColor == "Dark Khaki" || selectedColor == "Zinc (Solid)") {
+                        while (document.getElementById("size-2").options.length > 0) {
+                            document.getElementById("size-2").remove(0);
+                        }
+                        add_option("size-2", "- Bitte auswählen -", "");
+                        add_option("size-2", "S", "S");
+                        add_option("size-2", "M", "M");
+                        add_option("size-2", "L", "L");
+                        add_option("size-2", "XL", "XL");
+                        add_option("size-2", "2XL", "2XL");
+                        add_option("size-2", "3XL", "3XL");
                     }
-                    add_option("size-2", "- Bitte auswählen -", "");
-                    add_option("size-2", "S", "S");
-                    add_option("size-2", "M", "M");
-                    add_option("size-2", "L", "L");
-                    add_option("size-2", "XL", "XL");
-                    add_option("size-2", "2XL", "2XL");
-                    add_option("size-2", "3XL", "3XL");
+
                 }
 
                 selectedProduct = document.getElementsByName("product-3")[0].value;
 
                 if (selectedProduct === "T-Shirt") {
-                    while (document.getElementById("size-3").options.length > 0) {
-                        document.getElementById("size-3").remove(0);
+                    let selectedColor = document.getElementById("color-2").value;
+                    if (selectedColor == "Blue" || selectedColor == "Burgundy" || selectedColor == "Candy Pink" || selectedColor == "Dark Khaki" || selectedColor == "Zinc (Solid)") {
+                        while (document.getElementById("size-3").options.length > 0) {
+                            document.getElementById("size-3").remove(0);
+                        }
+                        add_option("size-3", "- Bitte auswählen -", "");
+                        add_option("size-3", "S", "S");
+                        add_option("size-3", "M", "M");
+                        add_option("size-3", "L", "L");
+                        add_option("size-3", "XL", "XL");
+                        add_option("size-3", "2XL", "2XL");
+                        add_option("size-3", "3XL", "3XL");
                     }
-                    add_option("size-3", "- Bitte auswählen -", "");
-                    add_option("size-3", "S", "S");
-                    add_option("size-3", "M", "M");
-                    add_option("size-3", "L", "L");
-                    add_option("size-3", "XL", "XL");
-                    add_option("size-3", "2XL", "2XL");
-                    add_option("size-3", "3XL", "3XL");
+
                 }
 
 
@@ -1662,12 +1673,12 @@
             var colorsPerProduct = {
                 'Zip-Hoodie': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', 'Steel Grey'],
                 'Hoodie': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'Earthy Green', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', 'Steel Grey', 'Ink Blue', "Lagoon Blue"],
-                'Sweater': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'Earthy Green', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', 'Steel Grey', "Lagoon Blue"],
-                'Polo-Shirt': ['Burgundy', 'Sapphire Blue', 'Deep Black', 'Earthy Green', 'Oxford Navy', 'Ink Blue', 'Heather Grey'],
-                'T-Shirt': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'Ink Blue', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', "Earthy Green"],
+                'Sweater': ['Burgundy', 'Dusty Pink', 'Deep Black', 'Kelly Green', 'Earthy Green', 'Oxford Navy', 'Sapphire Blue', 'Heather Grey', 'Steel Grey (Solid)', "Lagoon Blue"],
+                'Polo-Shirt': ['Ash (Heather)', 'Burgundy', 'Black', 'French Navy', 'Kelly Green'],
+                'T-Shirt': ['Burgundy', 'Deep Black', 'Kelly Green', 'Ash (Heather)', 'Blue', 'Candy Pink', 'Dark Khaki', 'Denim', 'Frensh Navy', 'Zinc (Solid)'],
                 'Turnbeutel': ['Burgundy', 'Emerald', 'French Navy', 'Fuchsia', 'Kelly Green', 'Purple', 'Surf Blue', 'Black'],
                 'Rucksack': ['Burgundy', 'French Navy', 'Fuchsia und Graphit Grey', 'Kelly Green', 'Purple', 'Surf Blue und Graphit Grey', 'Black'],
-                'Muetze': ['Burgundy', 'French Navy', 'Black', 'Dusty Pink', 'Graphit Grey', 'Heather Grey'],
+                'Muetze': ['Burgundy', 'French Navy', 'Black', 'Dusky Pink', 'Graphit Grey', 'Heather Grey'],
                 'Cap': ['Burgundy', 'Emerald', 'French Navy', 'Fuchsia', 'Kelly Green', 'Purple', 'Surf Blue', 'Black']
             };
 
@@ -5295,12 +5306,12 @@
             if (groesse_1 == "3XL") {
                 einzelpreis_1 = preise[artikel_1] + 4 || 0;
                 if (logo_1 != "") {
-                    einzelpreis_1 += 4;
+                    einzelpreis_1 += 3.5;
                 }
             } else {
                 einzelpreis_1 = preise[artikel_1] || 0;
                 if (logo_1 != "") {
-                    einzelpreis_1 += 4;
+                    einzelpreis_1 += 3.5;
                 }
             }
             const kosten_1 = einzelpreis_1 * anzahl_1;
@@ -5314,12 +5325,12 @@
             if (groesse_2 == "3XL") {
                 einzelpreis_2 = preise[artikel_2] + 4 || 0;
                 if (logo_2 != "") {
-                    einzelpreis_2 += 4;
+                    einzelpreis_2 += 3.5;
                 }
             } else {
                 einzelpreis_2 = preise[artikel_2] || 0;
                 if (logo_2 != "") {
-                    einzelpreis_2 += 4;
+                    einzelpreis_2 += 3.5;
                 }
             }
             const kosten_2 = einzelpreis_2 * anzahl_2;
@@ -5333,12 +5344,12 @@
             if (groesse_3 == "3XL") {
                 einzelpreis_3 = preise[artikel_3] + 4 || 0;
                 if (logo_3 != "") {
-                    einzelpreis_3 += 4;
+                    einzelpreis_3 += 3.5;
                 }
             } else {
                 einzelpreis_3 = preise[artikel_3] || 0;
                 if (logo_3 != "") {
-                    einzelpreis_3 += 4;
+                    einzelpreis_3 += 3.5;
                 }
             }
             const kosten_3 = einzelpreis_3 * anzahl_3;
@@ -5363,12 +5374,12 @@
             if (groesse_1 == "3XL") {
                 einzelpreis_1 = preise[artikel_1] + 4 || 0;
                 if (logo_1 != "") {
-                    einzelpreis_1 += 4;
+                    einzelpreis_1 += 3.5;
                 }
             } else {
                 einzelpreis_1 = preise[artikel_1] || 0;
                 if (logo_1 != "") {
-                    einzelpreis_1 += 4;
+                    einzelpreis_1 += 3.5;
                 }
             }
             const kosten_1 = einzelpreis_1 * anzahl_1;
@@ -5382,12 +5393,12 @@
             if (groesse_2 == "3XL") {
                 einzelpreis_2 = preise[artikel_2] + 4 || 0;
                 if (logo_2 != "") {
-                    einzelpreis_2 += 4;
+                    einzelpreis_2 += 3.5;
                 }
             } else {
                 einzelpreis_2 = preise[artikel_2] || 0;
                 if (logo_2 != "") {
-                    einzelpreis_2 += 4;
+                    einzelpreis_2 += 3.5;
                 }
             }
             const kosten_2 = einzelpreis_2 * anzahl_2;
@@ -5401,12 +5412,12 @@
             if (groesse_3 == "3XL") {
                 einzelpreis_3 = preise[artikel_3] + 4 || 0;
                 if (logo_3 != "") {
-                    einzelpreis_3 += 4;
+                    einzelpreis_3 += 3.5;
                 }
             } else {
                 einzelpreis_3 = preise[artikel_3] || 0;
                 if (logo_3 != "") {
-                    einzelpreis_3 += 4;
+                    einzelpreis_3 += 3.5;
                 }
             }
             const kosten_3 = einzelpreis_3 * anzahl_3;
@@ -7019,7 +7030,7 @@
                 'Cap': 11
             };
 
-            var logoCost = 4;
+            var logoCost = 3.5;
             var size3XLCost = 4;
 
             var productFields = [
