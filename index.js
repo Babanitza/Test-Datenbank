@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Static Files
+// Static Files         
 app.use(express.static(path.join(__dirname, "public")));
 
 // MySQL Pool

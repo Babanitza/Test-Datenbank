@@ -924,7 +924,7 @@
                     document.getElementsByName("size-3")[0].value = last_sizes_3[selectedProduct];
                 }
 
-                if (document.getElementById("size-3").value != last_sizes_1[selectedProduct]) {
+                if (document.getElementById("size-3").value != last_sizes_3[selectedProduct]) {
                     last_sizes_3[selectedProduct] = document.getElementById("size-3").value;
                 }
 
@@ -1345,11 +1345,13 @@
             }
 
             // Function to check size upon product selection
-            function checkSize() {
+            checkSize = function() {
                 for (var i = 0; i < productFields.length; i++) {
                     var product = productFields[i].value;
                     var size = sizeFields[i].value;
-
+                    if (size === "XS" && !["Hoodie", "Sweater", "T-Shirt"].includes(product)) {
+                        sizeFields[i].value = "";
+                    }
                     // If XS is selected and product is not Hoodie or Sweater, reset the size selection
                 }
             }
@@ -1495,39 +1497,61 @@
                 let selectedColor = document.getElementById("color-1").value;
 
                 if (selectedProduct === "T-Shirt" && (selectedColor == "Blue" || selectedColor == "Burgundy" || selectedColor == "Candy Pink" || selectedColor == "Dark Khaki" || selectedColor == "Zinc (Solid)")) {
-                        console.log("XS is not available");
-                        while (document.getElementById("size-1").options.length > 0) {
-                            document.getElementById("size-1").remove(0);
-                        }
-                        add_option("size-1", "- Bitte auswählen -", "");
-                        add_option("size-1", "S", "S");
-                        add_option("size-1", "M", "M");
-                        add_option("size-1", "L", "L");
-                        add_option("size-1", "XL", "XL");
-                        add_option("size-1", "2XL", "2XL");
-                        add_option("size-1", "3XL", "3XL");
+                    console.log("XS is not available");
+                    while (document.getElementById("size-1").options.length > 0) {
+                        document.getElementById("size-1").remove(0);
+                    }
+                    add_option("size-1", "- Bitte auswählen -", "");
+                    add_option("size-1", "S", "S");
+                    add_option("size-1", "M", "M");
+                    add_option("size-1", "L", "L");
+                    add_option("size-1", "XL", "XL");
+                    add_option("size-1", "2XL", "2XL");
+                    add_option("size-1", "3XL", "3XL");
 
-                }else if (selectedProduct === "T-Shirt" && (selectedColor != "Blue" && selectedColor != "Burgundy" && selectedColor != "Candy Pink" && selectedColor != "Dark Khaki" && selectedColor != "Zinc (Solid)")) {
-                    //document.getElementById("size-1").prepend(new Option("XS", "XS"));
+                } else if (selectedProduct === "T-Shirt" && (selectedColor != "Blue" && selectedColor != "Burgundy" && selectedColor != "Candy Pink" && selectedColor != "Dark Khaki" && selectedColor != "Zinc (Solid)")) {
+                    while (document.getElementById("size-1").options.length > 0) {
+                        document.getElementById("size-1").remove(0);
+                    }
+                    add_option("size-1", "- Bitte auswählen -", "");
+                    add_option("size-1", "XS", "XS");
+                    add_option("size-1", "S", "S");
+                    add_option("size-1", "M", "M");
+                    add_option("size-1", "L", "L");
+                    add_option("size-1", "XL", "XL");
+                    add_option("size-1", "2XL", "2XL");
+                    add_option("size-1", "3XL", "3XL");
+
                 }
 
                 selectedProduct = document.getElementsByName("product-2")[0].value;
                 selectedColor = document.getElementById("color-2").value;
 
                 if (selectedProduct === "T-Shirt" && (selectedColor == "Blue" || selectedColor == "Burgundy" || selectedColor == "Candy Pink" || selectedColor == "Dark Khaki" || selectedColor == "Zinc (Solid)")) {
-                        console.log("XS is not available");
-                        while (document.getElementById("size-2").options.length > 0) {
-                            document.getElementById("size-2").remove(0);
-                        }
-                        add_option("size-2", "- Bitte auswählen -", "");
-                        add_option("size-2", "S", "S");
-                        add_option("size-2", "M", "M");
-                        add_option("size-2", "L", "L");
-                        add_option("size-2", "XL", "XL");
-                        add_option("size-2", "2XL", "2XL");
-                        add_option("size-2", "3XL", "3XL");
+                    console.log("XS is not available");
+                    while (document.getElementById("size-2").options.length > 0) {
+                        document.getElementById("size-2").remove(0);
+                    }
+                    add_option("size-2", "- Bitte auswählen -", "");
+                    add_option("size-2", "S", "S");
+                    add_option("size-2", "M", "M");
+                    add_option("size-2", "L", "L");
+                    add_option("size-2", "XL", "XL");
+                    add_option("size-2", "2XL", "2XL");
+                    add_option("size-2", "3XL", "3XL");
 
-                }else if (selectedProduct === "T-Shirt" && (selectedColor != "Blue" && selectedColor != "Burgundy" && selectedColor != "Candy Pink" && selectedColor != "Dark Khaki" && selectedColor != "Zinc (Solid)")) {
+                } else if (selectedProduct === "T-Shirt" && (selectedColor != "Blue" && selectedColor != "Burgundy" && selectedColor != "Candy Pink" && selectedColor != "Dark Khaki" && selectedColor != "Zinc (Solid)")) {
+                    while (document.getElementById("size-2").options.length > 0) {
+                        document.getElementById("size-2").remove(0);
+                    }
+                    add_option("size-2", "- Bitte auswählen -", "");
+                    add_option("size-2", "XS", "XS");
+                    add_option("size-2", "S", "S");
+                    add_option("size-2", "M", "M");
+                    add_option("size-2", "L", "L");
+                    add_option("size-2", "XL", "XL");
+                    add_option("size-2", "2XL", "2XL");
+                    add_option("size-2", "3XL", "3XL");
                     //document.getElementById("size-2").prepend(new Option("XS", "XS"));
                 }
 
@@ -1535,19 +1559,30 @@
                 selectedColor = document.getElementById("color-3").value;
 
                 if (selectedProduct === "T-Shirt" && (selectedColor == "Blue" || selectedColor == "Burgundy" || selectedColor == "Candy Pink" || selectedColor == "Dark Khaki" || selectedColor == "Zinc (Solid)")) {
-                        console.log("XS is not available");
-                        while (document.getElementById("size-3").options.length > 0) {
-                            document.getElementById("size-3").remove(0);
-                        }
-                        add_option("size-3", "- Bitte auswählen -", "");
-                        add_option("size-3", "S", "S");
-                        add_option("size-3", "M", "M");
-                        add_option("size-3", "L", "L");
-                        add_option("size-3", "XL", "XL");
-                        add_option("size-3", "2XL", "2XL");
-                        add_option("size-3", "3XL", "3XL");
+                    console.log("XS is not available");
+                    while (document.getElementById("size-3").options.length > 0) {
+                        document.getElementById("size-3").remove(0);
+                    }
+                    add_option("size-3", "- Bitte auswählen -", "");
+                    add_option("size-3", "S", "S");
+                    add_option("size-3", "M", "M");
+                    add_option("size-3", "L", "L");
+                    add_option("size-3", "XL", "XL");
+                    add_option("size-3", "2XL", "2XL");
+                    add_option("size-3", "3XL", "3XL");
 
-                }else if (selectedProduct === "T-Shirt" && (selectedColor != "Blue" && selectedColor != "Burgundy" && selectedColor != "Candy Pink" && selectedColor != "Dark Khaki" && selectedColor != "Zinc (Solid)")) {
+                } else if (selectedProduct === "T-Shirt" && (selectedColor != "Blue" && selectedColor != "Burgundy" && selectedColor != "Candy Pink" && selectedColor != "Dark Khaki" && selectedColor != "Zinc (Solid)")) {
+                    while (document.getElementById("size-3").options.length > 0) {
+                        document.getElementById("size-3").remove(0);
+                    }
+                    add_option("size-3", "- Bitte auswählen -", "");
+                    add_option("size-3", "XS", "XS");
+                    add_option("size-3", "S", "S");
+                    add_option("size-3", "M", "M");
+                    add_option("size-3", "L", "L");
+                    add_option("size-3", "XL", "XL");
+                    add_option("size-3", "2XL", "2XL");
+                    add_option("size-3", "3XL", "3XL");
                     //document.getElementById("size-3").prepend(new Option("XS", "XS"));
                 }
 
@@ -4501,7 +4536,8 @@
                                                                                         <span
                                                                                             class="wpcf7-form-control-wrap"
                                                                                             data-name="logo-text-2"><input
-                                                                                                size="40" maxlength="400"
+                                                                                                size="40"
+                                                                                                maxlength="400"
                                                                                                 class="wpcf7-form-control wpcf7-text"
                                                                                                 id="logo-text-2"
                                                                                                 aria-invalid="false"
@@ -4745,7 +4781,8 @@
                                                                                         <span
                                                                                             class="wpcf7-form-control-wrap"
                                                                                             data-name="logo-text-3"><input
-                                                                                                size="40" maxlength="400"
+                                                                                                size="40"
+                                                                                                maxlength="400"
                                                                                                 class="wpcf7-form-control wpcf7-text"
                                                                                                 id="logo-text-3"
                                                                                                 aria-invalid="false"
@@ -4793,7 +4830,8 @@
                                                                                         <span
                                                                                             class="wpcf7-form-control-wrap"
                                                                                             data-name="total-cost"><input
-                                                                                                size="40" maxlength="400"
+                                                                                                size="40"
+                                                                                                maxlength="400"
                                                                                                 class="wpcf7-form-control wpcf7-text"
                                                                                                 id="total-cost"
                                                                                                 readonly="readonly"
